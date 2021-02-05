@@ -16,14 +16,19 @@ You have multiple options to deploy the app.
 
 1. Login to Vercel to [Import a Third-Party Git Repository](https://vercel.com/login?next=%2Fnew%2Fgit%2Fthird-party). GitHub, GitLab, Bitbucket, and plain e-mail are all supported.
 2. Enter the URL of this repository: `https://github.com/GrygrFlzr/are-we-there-yet`
-3. Under **Build & Development Settings**:
+3. When asked about the directory containing the project source code, the default is fine, hit **Continue**.
+4. Switch **FRAMEWORK PRESET** to `Svelte`.
+5. Under **Build & Output Settings**:
 
     - Toggle _Override_ for `BUILD COMMAND` and set it to `npm run build:vercel`
     - Toggle _Override_ for `OUTPUT DIRECTORY` and set it to `build`
 
-4. todo
+6. Under **Environment Variables**, set **NAME** to `TOKEN`. Set **VALUE** to your group token from Deschtimes. Click **Add**.
+7. **Deploy**
 
 ### Deploying to Netlify
+
+**Currently broken**, please use another deployment method for now.
 
 1. Fork this repository.
 2. [Login to Netlify](https://app.netlify.com/signup). GitHub, GitLab, Bitbucket, and plain e-mail are all supported.
@@ -41,7 +46,7 @@ You have multiple options to deploy the app.
 # Build the server
 npm run build
 # Start the server at a custom port, e.g. 8080
-npx svelte-kit start -p 8080
+npx cross-env TOKEN=INSERT_TOKEN_HERE svelte-kit start -p 8080
 ```
 
 Point your webserver at the application. The method will vary based on what you're running (e.g. Apache, nginx) and is out of the scope of this README.
