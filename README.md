@@ -84,10 +84,10 @@ Replace both instances of `http://localhost:4100` with your application (e.g. `h
     src="http://localhost:4100"
     allowtransparency="true"
     frameborder="0"
-    style="opacity: 0;"
+    style="opacity: 0; min-width: 100%;"
 ></iframe>
 ```
 
 # License
 
-Dual-licensed under both MIT license and Apache License (Version 2.0), under your convenience.
+Dual-licensed under either MIT license or Apache License (Version 2.0), under your convenience.
