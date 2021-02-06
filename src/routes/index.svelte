@@ -36,7 +36,7 @@
     bind:clientWidth={divHeight}
 >
     {#each incompleteShows as show (show.id)}
-        <Show {show} on:resize{messageParentAboutResize} />
+        <Show {show} on:areWeThereYet-resize{messageParentAboutResize} />
     {:else}
         {#if $session.message}
             <!-- Error -->

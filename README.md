@@ -98,7 +98,7 @@ Replace both instances of `http://localhost:4100` with your application (e.g. `h
     window.addEventListener(
         'message',
         function (event) {
-            if (!event.origin.startsWith('http://localhost:4100')) {
+            if (event.origin !== 'http://localhost:4100') {
                 return;
             }
 

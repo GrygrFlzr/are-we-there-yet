@@ -21,7 +21,7 @@
         } else {
             expanded = false;
         }
-        dispatch('resize');
+        dispatch('areWeThereYet-resize');
     }
 
     $: unfinishedEpisodes = show
