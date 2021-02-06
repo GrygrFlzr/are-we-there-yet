@@ -6,7 +6,7 @@
         someMarked,
         timeAgo,
     } from '$components/utils';
-    import InformationCircleSmall from './InformationCircleSmall.svelte';
+    import InformationCircleSmall from './Icon/InformationCircleSmall.svelte';
 
     export let episode;
     export let status;

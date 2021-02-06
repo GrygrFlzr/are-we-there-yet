@@ -5,8 +5,8 @@
         latestEpisode,
         notYetReleased,
     } from '$components/utils';
-    import ChevronDownSmall from './ChevronDownSmall.svelte';
-    import ChevronUpSmall from './ChevronUpSmall.svelte';
+    import ChevronDownSmall from './Icon/ChevronDownSmall.svelte';
+    import ChevronUpSmall from './Icon/ChevronUpSmall.svelte';
 
     export let show;
 

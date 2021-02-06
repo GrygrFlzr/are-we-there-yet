@@ -1,7 +1,7 @@
 <script>
     import { session } from '$app/stores';
-    import CheckCircle from '$components/CheckCircle.svelte';
-    import Exclamation from '$components/Exclamation.svelte';
+    import CheckCircle from '$components/Icon/CheckCircle.svelte';
+    import Exclamation from '$components/Icon/Exclamation.svelte';
     import Show from '$components/Show.svelte';
     import { byLatestEpisode } from '$components/utils';
     import { onMount } from 'svelte';
