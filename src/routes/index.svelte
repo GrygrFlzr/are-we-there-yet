@@ -8,15 +8,10 @@
 
     let divHeight;
 
-    let _window;
-
     async function messageParentAboutResize() {
         if (typeof window !== 'undefined') {
-            _window = window;
-        }
-        if (typeof _window !== 'undefined') {
             await tick();
-            _window.parent.postMessage(
+            window.parent.postMessage(
                 JSON.stringify({
                     action: 'resize',
                     height: document.body.scrollHeight,
@@ -24,10 +19,6 @@
                 '*'
             );
         }
-    }
-
-    function handleResize(_event) {
-        messageParentAboutResize();
     }
 
     onMount(() => {
@@ -42,10 +33,10 @@
 
 <div
     class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 px-1 pb-2 sm:px-2 sm:py-2 bg-transparent"
-    bind:clientWidth={divHeight}
+    bind:clientHeight={divHeight}
 >
     {#each incompleteShows as show (show.id)}
-        <Show {show} on:areWeThereYetResize{handleResize} />
+        <Show {show} />
     {:else}
         {#if $session.message}
             <!-- Error -->

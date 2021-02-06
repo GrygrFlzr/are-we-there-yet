@@ -7,11 +7,8 @@
         latestEpisode,
         notYetReleased,
     } from '$components/utils';
-    import { createEventDispatcher } from 'svelte';
 
     export let show;
-
-    const dispatch = createEventDispatcher();
 
     let expanded = false;
 
@@ -21,9 +18,6 @@
         } else {
             expanded = false;
         }
-        dispatch('areWeThereYetResize', {
-            time: new Date(),
-        });
     }
 
     $: unfinishedEpisodes = show
