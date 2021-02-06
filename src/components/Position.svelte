@@ -16,22 +16,31 @@
     let innerWidth;
     let tooltip;
     let customTranslate = '';
+    let rect;
+    let shouldMoveLeft = false;
+    let shouldMoveRight = false;
 
     onMount(() => {
         innerWidth = document.body.scrollWidth;
     });
+
+    function recalculate() {
+        rect = tooltip ? tooltip.getBoundingClientRect() : undefined;
+    }
 
     $: colors =
         positionColors[position.acronym] ||
         'bg-gray-100 text-gray-800 border-gray-200';
 
     // prevent tooltip from escaping widget
-    $: rect = tooltip ? tooltip.getBoundingClientRect() : undefined;
+    $: tooltip, recalculate();
     $: tooltipRightEdge = rect ? rect.width + rect.left : 0;
     $: shouldMoveLeft =
-        rect && innerWidth ? tooltipRightEdge >= innerWidth - 4 : false;
+        shouldMoveLeft ||
+        (rect && innerWidth ? tooltipRightEdge >= innerWidth - 4 : false);
     $: tooltipLeftEdge = rect ? rect.left : 5;
-    $: shouldMoveRight = rect ? tooltipLeftEdge <= 4 : false;
+    $: shouldMoveRight =
+        shouldMoveRight || (rect ? tooltipLeftEdge <= 4 : false);
     $: if (shouldMoveLeft) {
         customTranslate = '--tw-translate-x: -85%;';
     } else if (shouldMoveRight) {
