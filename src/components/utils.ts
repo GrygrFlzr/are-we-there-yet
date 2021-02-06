@@ -88,6 +88,14 @@ export function hasAired(episode: Episode) {
     return now > airDate;
 }
 
+export function notYetReleased(episode: Episode) {
+    return !episode.released;
+}
+
 export function allMarked(episode: Episode) {
     return episode.staff.filter((staff) => !staff.finished).length === 0;
+}
+
+export function someMarked(episode: Episode) {
+    return episode.staff.filter((staff) => staff.finished).length > 0;
 }

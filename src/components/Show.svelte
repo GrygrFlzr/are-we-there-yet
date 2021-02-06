@@ -1,8 +1,30 @@
 <script>
     import Episode from '$components/Episode.svelte';
-    import { latestEpisode } from '$components/utils';
+    import {
+        byEarliestDate,
+        latestEpisode,
+        notYetReleased,
+    } from '$components/utils';
+    import ChevronDownSmall from './ChevronDownSmall.svelte';
+    import ChevronUpSmall from './ChevronUpSmall.svelte';
 
     export let show;
+
+    let expanded = false;
+
+    function toggleExpand() {
+        if (unfinishedEpisodes.length > 1) {
+            expanded = !expanded;
+        } else {
+            expanded = false;
+        }
+    }
+
+    $: unfinishedEpisodes = show
+        ? show.episodes.filter(notYetReleased).sort(byEarliestDate('air_date'))
+        : [];
+    $: latest = latestEpisode(show);
+    $: moreNumber = Math.min(unfinishedEpisodes.length - 1, 3);
 </script>
 
 <div
@@ -31,6 +53,38 @@
                 {/each}
             </span>
         {/if}
-        <Episode episode={latestEpisode(show)} status={show.status} />
+        {#if expanded}
+            {#each unfinishedEpisodes.slice(0, 4) as episode}
+                <Episode
+                    {episode}
+                    status={show.status}
+                    latest={episode.id === latest.id}
+                />
+            {/each}
+            <button
+                class="flex flex-row mt-2 text-gray-500 hover:text-gray-400 transition-colors"
+                on:click={toggleExpand}
+            >
+                <div class="h-5 w-5">
+                    <ChevronUpSmall />
+                </div>
+                Show less
+            </button>
+        {:else}
+            <Episode episode={latest} status={show.status} latest={true} />
+            {#if unfinishedEpisodes.length > 1}
+                <button
+                    class="flex flex-row mt-2 text-blue-500 hover:text-blue-400 transition-colors"
+                    on:click={toggleExpand}
+                >
+                    <div class="h-5 w-5">
+                        <ChevronDownSmall />
+                    </div>
+                    Show {moreNumber} more episode{moreNumber === 1
+                        ? ''
+                        : 's'}...
+                </button>
+            {/if}
+        {/if}
     </div>
 </div>

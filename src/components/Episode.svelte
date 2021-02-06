@@ -1,15 +1,22 @@
 <script>
     import Position from '$components/Position.svelte';
-    import { allMarked, hasAired, timeAgo } from '$components/utils';
+    import {
+        allMarked,
+        hasAired,
+        someMarked,
+        timeAgo,
+    } from '$components/utils';
     import InformationCircleSmall from './InformationCircleSmall.svelte';
 
     export let episode;
     export let status;
+    export let latest = false;
 
     $: aired = hasAired(episode);
     $: marked = allMarked(episode);
     $: waitingOnRelease = aired && marked;
     $: inProgress = aired && !marked;
+    $: noProgress = !someMarked(episode);
 </script>
 
 {#if episode}
@@ -17,17 +24,23 @@
         <span class="whitespace-nowrap">
             Ep. {episode.number}
             {#if !aired}
-                airs on
+                airs
                 <time datetime={episode.air_date}>
-                    {new Date(episode.air_date).toLocaleString()}
+                    {timeAgo.format(new Date(episode.air_date))}
                 </time>
             {:else if waitingOnRelease}
                 waiting for release
+            {:else if noProgress}
+                aired
+                <time datetime={episode.air_date}>
+                    {timeAgo.format(new Date(episode.air_date))}
+                </time>
+                (no progress yet)
             {:else if inProgress}
                 requires&nbsp;
             {/if}
         </span>
-        {#if inProgress}
+        {#if inProgress && !noProgress}
             <div class="flex gap-1">
                 {#each episode.staff as staff (staff.id)}
                     {#if !staff.finished}
@@ -37,27 +50,31 @@
             </div>
         {/if}
     </div>
-    <div class="absolute bottom-2 left-3 text-xs text-gray-400">
-        <div class="flex flex-row gap-1 text-left">
-            {#if status}
-                <!-- Status Tooltip -->
-                <span class="inline-block h-4 w-4 relative text-blue-400 group">
-                    <InformationCircleSmall />
+    {#if latest}
+        <div class="absolute bottom-2 left-3 text-xs text-gray-400">
+            <div class="flex flex-row gap-1 text-left">
+                {#if status}
+                    <!-- Status Tooltip -->
                     <span
-                        class="pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity shadow rounded rounded-bl-none absolute bottom-5 w-60 border bg-blue-100 text-blue-800 border-blue-400 px-2 py-2"
+                        class="z-10 inline-block h-4 w-4 relative text-blue-400 group"
                     >
-                        {status}
+                        <InformationCircleSmall />
+                        <span
+                            class="pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity shadow rounded rounded-bl-none absolute bottom-5 w-60 border bg-blue-100 text-blue-800 border-blue-400 px-2 py-2"
+                        >
+                            {status}
+                        </span>
                     </span>
+                {/if}
+                <span>
+                    Updated {timeAgo.format(new Date(episode.updated_at))}
                 </span>
-            {/if}
-            <span>
-                Updated {timeAgo.format(new Date(episode.updated_at))}
-            </span>
+            </div>
         </div>
-    </div>
-    <div class="absolute bottom-2 right-3 text-xs text-gray-400">
-        <div class="flex flex-row text-right">
-            <span>{episode.season}</span>
+        <div class="absolute bottom-2 right-3 text-xs text-gray-400">
+            <div class="flex flex-row text-right">
+                <span>{episode.season}</span>
+            </div>
         </div>
-    </div>
+    {/if}
 {/if}

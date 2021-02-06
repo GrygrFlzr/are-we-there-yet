@@ -13,7 +13,7 @@
             window.parent.postMessage(
                 JSON.stringify({
                     action: 'resize',
-                    height: document.body.scrollHeight + 4,
+                    height: document.body.scrollHeight,
                 }),
                 '*'
             );
@@ -31,7 +31,7 @@
 </script>
 
 <div
-    class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 px-1 sm:px-2 sm:py-2 bg-transparent"
+    class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 px-1 pb-2 sm:px-2 sm:py-2 bg-transparent"
     bind:clientWidth={divHeight}
 >
     {#each incompleteShows as show (show.id)}
