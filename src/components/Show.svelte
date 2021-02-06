@@ -21,7 +21,9 @@
         } else {
             expanded = false;
         }
-        dispatch('areWeThereYet-resize');
+        dispatch('areWeThereYetResize', {
+            time: new Date(),
+        });
     }
 
     $: unfinishedEpisodes = show

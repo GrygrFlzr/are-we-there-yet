@@ -8,10 +8,15 @@
 
     let divHeight;
 
+    let _window;
+
     async function messageParentAboutResize() {
         if (typeof window !== 'undefined') {
+            _window = window;
+        }
+        if (typeof _window !== 'undefined') {
             await tick();
-            window.parent.postMessage(
+            _window.parent.postMessage(
                 JSON.stringify({
                     action: 'resize',
                     height: document.body.scrollHeight,
@@ -19,6 +24,10 @@
                 '*'
             );
         }
+    }
+
+    function handleResize(_event) {
+        messageParentAboutResize();
     }
 
     onMount(() => {
@@ -36,7 +45,7 @@
     bind:clientWidth={divHeight}
 >
     {#each incompleteShows as show (show.id)}
-        <Show {show} on:areWeThereYet-resize{messageParentAboutResize} />
+        <Show {show} on:areWeThereYetResize{handleResize} />
     {:else}
         {#if $session.message}
             <!-- Error -->

@@ -107,7 +107,6 @@ Replace both instances of `http://localhost:4100` with your application (e.g. `h
             if (data.action === 'resize') {
                 iframe.height = data.height;
                 iframe.style.opacity = '1';
-                iframe.scrolling = 'no';
             }
         },
         false
