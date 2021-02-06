@@ -14,17 +14,23 @@ You have multiple options to deploy the app.
 
 ### Deploying to Vercel
 
-1. Login to Vercel to [Import a Third-Party Git Repository](https://vercel.com/login?next=%2Fnew%2Fgit%2Fthird-party). GitHub, GitLab, Bitbucket, and plain e-mail are all supported.
-2. Enter the URL of this repository: `https://github.com/GrygrFlzr/are-we-there-yet`
+1. Fork this repository.
+2. [Login to Vercel.](https://vercel.com/) GitHub, GitLab, Bitbucket, and plain e-mail are all supported. Create a new project.
 3. When asked about the directory containing the project source code, the default is fine, hit **Continue**.
 4. Switch **FRAMEWORK PRESET** to `Svelte`.
 5. Under **Build & Output Settings**:
-
     - Toggle _Override_ for `BUILD COMMAND` and set it to `npm run build:vercel`
     - Toggle _Override_ for `OUTPUT DIRECTORY` and set it to `build`
+6. Under **Environment Variables**:
+    - Set **NAME** to `TOKEN`
+    - Set **VALUE** to your group token from Deschtimes
+7. Click **Add** and then **Deploy**.
+8. Under your newly made project, go to **Settings** > **Git**, and scroll down to **Deploy Hooks**.
+9. Create a Hook with a descriptive name (`Deschtimes` is suggested) and type in `main` for your `Git Branch Name`, click **Create Hook**. **Copy** the newly added webhook URL and do not share it with anyone else.
+10. Log in to Deschtimes and go to your Group page. Under **Webhooks**, click **Manage**.
+11. Click **Add Webhook**. Use a descriptive name like `Vercel`, and paste the URL you obtained from step 9. Leave the platform as **Generic**, press **Create Webhook**.
 
-6. Under **Environment Variables**, set **NAME** to `TOKEN`. Set **VALUE** to your group token from Deschtimes. Click **Add**.
-7. **Deploy**
+Your application will be statically generated every time your group's projects are updated on Deschtimes.
 
 ### Deploying to Netlify
 
