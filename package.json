@@ -9,7 +9,10 @@
     "scripts": {
         "dev": "env-cmd --silent svelte-kit dev",
         "build": "env-cmd --silent svelte-kit build && svelte-kit adapt",
-        "build:netlify": "cross-env ADAPTER=netlify npm run build",
+        "build:netlify": "cross-env ADAPTER=netlify npm run build && npm run build:netlify:bodge",
+        "build:netlify:bodge": "npm run build:netlify:bodge:1 && npm run build:netlify:bodge:2",
+        "build:netlify:bodge:1": "mv ./functions/render/app.cjs ./functions/render/app.js",
+        "build:netlify:bodge:2": "mv ./functions/render/app.cjs.map ./functions/render/app.js.map",
         "build:vercel": "cross-env ADAPTER=vercel npm run build",
         "start": "env-cmd --silent svelte-kit start"
     },
