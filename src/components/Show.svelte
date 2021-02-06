@@ -37,7 +37,7 @@
             alt="Poster for {show.name}"
         />
     </div>
-    <div class="text-xs h-full flex-grow px-3 pt-2 relative py-8">
+    <div class="text-xs h-full flex-grow px-3 pt-2 relative py-8 max-w-full">
         <h1 class="text-gray-800 font-medium text-base">
             {show.name}
         </h1>

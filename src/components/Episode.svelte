@@ -23,11 +23,12 @@
     $: uniqueStaff = deduplicateStaff(
         episode.staff.filter((staff) => !staff.finished)
     );
+    $: shouldWrap = inList || uniqueStaff.length > 5;
 </script>
 
 {#if episode}
     <div
-        class="flex text-sm text-gray-800 mt-2 {inList
+        class="flex text-sm text-gray-800 mt-2 {shouldWrap
             ? 'flex-col'
             : 'flex-row'}"
         class:col-start-1={uniqueStaff.length > 4}
@@ -49,7 +50,7 @@
                 </time>
                 (no progress yet)
             {:else if inProgress}
-                {#if inList}
+                {#if shouldWrap}
                     is waiting on
                 {:else}
                     requires&nbsp;
@@ -57,7 +58,7 @@
             {/if}
         </span>
         {#if inProgress && !noProgress}
-            <div class="flex gap-1" class:mt-1={inList}>
+            <div class="flex gap-1" class:mt-1={shouldWrap}>
                 {#each uniqueStaff as staff (staff.id)}
                     <Position position={staff.position} />
                 {/each}
