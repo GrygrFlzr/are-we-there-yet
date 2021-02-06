@@ -15,7 +15,7 @@ You have multiple options to deploy the app.
 ### Deploying to Vercel
 
 1. Fork this repository.
-2. [Login to Vercel.](https://vercel.com/) GitHub, GitLab, Bitbucket, and plain e-mail are all supported. Create a new project.
+2. [Login to Vercel](https://vercel.com/login). GitHub, GitLab, Bitbucket, and plain e-mail are all supported. Create a new project.
 3. When asked about the directory containing the project source code, the default is fine, hit **Continue**.
 4. Switch **FRAMEWORK PRESET** to `Svelte`.
 5. Under **Build & Output Settings**:
@@ -34,8 +34,6 @@ Your application will be statically generated every time your group's projects a
 
 ### Deploying to Netlify
 
-**Currently broken**, please use another deployment method for now.
-
 1. Fork this repository.
 2. [Login to Netlify](https://app.netlify.com/signup). GitHub, GitLab, Bitbucket, and plain e-mail are all supported.
 3. Under project type, select **Web Application** and **Get started**.
@@ -45,6 +43,12 @@ Your application will be statically generated every time your group's projects a
 7. Under **Advanced build settings**, click **New variable**.
 8. Set **Key** to `TOKEN`. Set **Value** to your group token from Deschtimes.
 9. **Deploy site**.
+10. Under **Build & deploy**, scroll down to **Build hooks** and click **Add build hook**.
+11. Set the name to something descriptive like `Deschtimes` and keep the branch to `main`. Hit save and copy the URL.
+12. Log in to Deschtimes and go to your Group page. Under **Webhooks**, click **Manage**.
+13. Click **Add Webhook**. Use a descriptive name like `Netlify`, and paste the URL you obtained from step 11. Leave the platform as **Generic**, press **Create Webhook**.
+
+Your application will be statically generated every time your group's projects are updated on Deschtimes.
 
 ### Deploying on your own server
 
@@ -71,6 +75,8 @@ npx svelte-kit start -p 8080
 ```
 
 Point your webserver at the application. The method will vary based on what you're running (e.g. Apache, nginx) and is out of the scope of this README.
+
+Your application will be _dynamically_ generated every time you recieve a request.
 
 ## Wordpress HTML Widget
 
