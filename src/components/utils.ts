@@ -99,3 +99,10 @@ export function allMarked(episode: Episode) {
 export function someMarked(episode: Episode) {
     return episode.staff.filter((staff) => staff.finished).length > 0;
 }
+
+export function deduplicateStaff(stafflist: Staff[]) {
+    const acronymList = stafflist.map((staff) => staff.position.acronym);
+    return stafflist.filter((staff, index) => {
+        return acronymList.indexOf(staff.position.acronym) === index;
+    });
+}

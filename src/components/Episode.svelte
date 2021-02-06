@@ -2,6 +2,7 @@
     import Position from '$components/Position.svelte';
     import {
         allMarked,
+        deduplicateStaff,
         hasAired,
         someMarked,
         timeAgo,
@@ -17,6 +18,8 @@
     $: waitingOnRelease = aired && marked;
     $: inProgress = aired && !marked;
     $: noProgress = !someMarked(episode);
+
+    $: uniqueStaff = deduplicateStaff(episode.staff);
 </script>
 
 {#if episode}
@@ -42,7 +45,7 @@
         </span>
         {#if inProgress && !noProgress}
             <div class="flex gap-1">
-                {#each episode.staff as staff (staff.id)}
+                {#each uniqueStaff as staff (staff.id)}
                     {#if !staff.finished}
                         <Position position={staff.position} />
                     {/if}
