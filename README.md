@@ -4,7 +4,7 @@ Web client for Deschtimes group status.
 
 ## Local Development
 
-```
+```sh
 npm run dev
 ```
 
@@ -48,11 +48,26 @@ Your application will be statically generated every time your group's projects a
 
 ### Deploying on your own server
 
+Advanced usage.
+
+1. Clone this project.
+2. Create a new `.env` file in the root directory of the project:
+
+```env
+TOKEN=your_token_from_deschtimes
+```
+
+3. Run the following commands
+
 ```sh
+# Install dependencies
+npm install
+
 # Build the server
 npm run build
+
 # Start the server at a custom port, e.g. 8080
-npx cross-env TOKEN=INSERT_TOKEN_HERE svelte-kit start -p 8080
+npx svelte-kit start -p 8080
 ```
 
 Point your webserver at the application. The method will vary based on what you're running (e.g. Apache, nginx) and is out of the scope of this README.
