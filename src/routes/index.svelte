@@ -4,12 +4,13 @@
     import Exclamation from '$components/Icon/Exclamation.svelte';
     import Show from '$components/Show.svelte';
     import { byLatestEpisode } from '$components/utils';
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
 
     let divHeight;
 
-    function messageParentAboutResize() {
+    async function messageParentAboutResize() {
         if (typeof window !== 'undefined') {
+            await tick();
             window.parent.postMessage(
                 JSON.stringify({
                     action: 'resize',
