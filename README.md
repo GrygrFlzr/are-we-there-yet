@@ -14,7 +14,9 @@ You have multiple options to deploy the app.
 
 ### Deploying to Vercel
 
-This is the recommended method.
+<del>This is the recommended method.</del>
+
+Not recommended until Deschtimes webhook can properly support Vercel. Use Netlify for now.
 
 1. Fork this repository.
 2. [Login to Vercel](https://vercel.com/login). GitHub, GitLab, Bitbucket, and plain e-mail are all supported. Create a new project.
