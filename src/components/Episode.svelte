@@ -5,31 +5,36 @@
 
     export let episode;
     export let status;
+
+    $: aired = hasAired(episode);
+    $: marked = allMarked(episode);
+    $: waitingOnRelease = aired && marked;
+    $: inProgress = aired && !marked;
 </script>
 
 {#if episode}
-    <div class="flex gap-1 flex-wrap items-center text-sm text-gray-800 pt-1">
-        <span class="whitespace-nowrap">Ep. {episode.number}</span>
-        {#if hasAired(episode)}
-            {#if allMarked(episode)}
-                <span>waiting for release</span>
-            {:else}
-                <span>requires</span>
-                <div class="flex gap-1">
-                    {#each episode.staff as staff (staff.id)}
-                        {#if !staff.finished}
-                            <Position position={staff.position} />
-                        {/if}
-                    {/each}
-                </div>
-            {/if}
-        {:else}
-            <span>
-                Airs on
+    <div class="flex flex-wrap items-center text-sm text-gray-800 pt-1">
+        <span class="whitespace-nowrap">
+            Ep. {episode.number}
+            {#if !aired}
+                airs on
                 <time datetime={episode.air_date}>
                     {new Date(episode.air_date).toLocaleString()}
                 </time>
-            </span>
+            {:else if waitingOnRelease}
+                waiting for release
+            {:else if inProgress}
+                requires&nbsp;
+            {/if}
+        </span>
+        {#if inProgress}
+            <div class="flex gap-1">
+                {#each episode.staff as staff (staff.id)}
+                    {#if !staff.finished}
+                        <Position position={staff.position} />
+                    {/if}
+                {/each}
+            </div>
         {/if}
     </div>
     <div class="absolute bottom-2 left-3 text-xs text-gray-400">
