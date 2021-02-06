@@ -11,7 +11,6 @@
 
     export let show;
 
-    const dispatch = createEventDispatcher();
     let expanded = false;
 
     function toggleExpand() {
@@ -20,6 +19,8 @@
         } else {
             expanded = false;
         }
+
+        const dispatch = createEventDispatcher();
         dispatch('resize');
     }
 
