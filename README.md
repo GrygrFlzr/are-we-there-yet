@@ -14,6 +14,8 @@ You have multiple options to deploy the app.
 
 ### Deploying to Vercel
 
+This is the recommended method.
+
 1. Fork this repository.
 2. [Login to Vercel](https://vercel.com/login). GitHub, GitLab, Bitbucket, and plain e-mail are all supported. Create a new project.
 3. When asked about the directory containing the project source code, the default is fine, hit **Continue**.
