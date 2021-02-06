@@ -12,6 +12,7 @@
     export let episode;
     export let status;
     export let latest = false;
+    export let inList = false;
 
     $: aired = hasAired(episode);
     $: marked = allMarked(episode);
@@ -19,11 +20,19 @@
     $: inProgress = aired && !marked;
     $: noProgress = !someMarked(episode);
 
-    $: uniqueStaff = deduplicateStaff(episode.staff);
+    $: uniqueStaff = deduplicateStaff(
+        episode.staff.filter((staff) => !staff.finished)
+    );
 </script>
 
 {#if episode}
-    <div class="flex flex-wrap items-center text-sm text-gray-800 pt-1">
+    <div
+        class="flex text-sm text-gray-800 mt-2 {inList
+            ? 'flex-col'
+            : 'flex-row'}"
+        class:col-start-1={uniqueStaff.length > 4}
+        class:col-end-3={uniqueStaff.length > 4}
+    >
         <span class="whitespace-nowrap">
             Ep. {episode.number}
             {#if !aired}
@@ -32,7 +41,7 @@
                     {timeAgo.format(new Date(episode.air_date))}
                 </time>
             {:else if waitingOnRelease}
-                waiting for release
+                to be released
             {:else if noProgress}
                 aired
                 <time datetime={episode.air_date}>
@@ -40,15 +49,17 @@
                 </time>
                 (no progress yet)
             {:else if inProgress}
-                requires&nbsp;
+                {#if inList}
+                    is waiting on
+                {:else}
+                    requires&nbsp;
+                {/if}
             {/if}
         </span>
         {#if inProgress && !noProgress}
-            <div class="flex gap-1">
+            <div class="flex gap-1" class:mt-1={inList}>
                 {#each uniqueStaff as staff (staff.id)}
-                    {#if !staff.finished}
-                        <Position position={staff.position} />
-                    {/if}
+                    <Position position={staff.position} />
                 {/each}
             </div>
         {/if}

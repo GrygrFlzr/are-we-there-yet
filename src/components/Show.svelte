@@ -54,13 +54,16 @@
             </span>
         {/if}
         {#if expanded}
-            {#each unfinishedEpisodes.slice(0, 4) as episode}
-                <Episode
-                    {episode}
-                    status={show.status}
-                    latest={episode.id === latest.id}
-                />
-            {/each}
+            <div class="grid grid-cols-2 justify-between">
+                {#each unfinishedEpisodes.slice(0, 4) as episode}
+                    <Episode
+                        {episode}
+                        status={show.status}
+                        latest={episode.id === latest.id}
+                        inList={true}
+                    />
+                {/each}
+            </div>
             <button
                 class="flex flex-row mt-2 text-gray-500 hover:text-gray-400 transition-colors"
                 on:click={toggleExpand}
