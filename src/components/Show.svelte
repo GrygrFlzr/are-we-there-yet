@@ -1,15 +1,17 @@
 <script>
+    import ChevronDownSmall from '$components/Icon/ChevronDownSmall.svelte';
+    import ChevronUpSmall from '$components/Icon/ChevronUpSmall.svelte';
     import Episode from '$components/Episode.svelte';
     import {
         byEarliestDate,
         latestEpisode,
         notYetReleased,
     } from '$components/utils';
-    import ChevronDownSmall from './Icon/ChevronDownSmall.svelte';
-    import ChevronUpSmall from './Icon/ChevronUpSmall.svelte';
+    import { createEventDispatcher } from 'svelte';
 
     export let show;
 
+    const dispatch = createEventDispatcher();
     let expanded = false;
 
     function toggleExpand() {
@@ -18,6 +20,7 @@
         } else {
             expanded = false;
         }
+        dispatch('resize');
     }
 
     $: unfinishedEpisodes = show

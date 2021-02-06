@@ -1,4 +1,5 @@
 <script>
+    import InformationCircleSmall from '$components/Icon/InformationCircleSmall.svelte';
     import Position from '$components/Position.svelte';
     import {
         allMarked,
@@ -7,7 +8,6 @@
         someMarked,
         timeAgo,
     } from '$components/utils';
-    import InformationCircleSmall from './Icon/InformationCircleSmall.svelte';
 
     export let episode;
     export let status;
