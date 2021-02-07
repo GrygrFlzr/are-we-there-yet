@@ -32,7 +32,7 @@ Not recommended until Deschtimes webhook can properly support Vercel. Use Netlif
 8. Under your newly made project, go to **Settings** > **Git**, and scroll down to **Deploy Hooks**.
 9. Create a Hook with a descriptive name (`Deschtimes` is suggested) and type in `main` for your `Git Branch Name`, click **Create Hook**. **Copy** the newly added webhook URL and do not share it with anyone else.
 10. Log in to Deschtimes and go to your Group page. Under **Webhooks**, click **Manage**.
-11. Click **Add Webhook**. Use a descriptive name like `Vercel`, and paste the URL you obtained from step 9. Leave the platform as **Generic**, press **Create Webhook**.
+11. Click **Add Webhook**. Use a descriptive name like `Vercel`, and paste the URL you obtained from step 9. Set the platform to **Discord**, press **Create Webhook**.
 
 Your application will be statically generated every time your group's projects are updated on Deschtimes.
 
