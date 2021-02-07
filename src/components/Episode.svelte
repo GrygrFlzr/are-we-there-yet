@@ -48,7 +48,6 @@
                 <time datetime={episode.air_date}>
                     {timeAgo.format(new Date(episode.air_date))}
                 </time>
-                (no progress yet)
             {:else if inProgress}
                 {#if shouldWrap}
                     is waiting on
@@ -57,7 +56,9 @@
                 {/if}
             {/if}
         </span>
-        {#if inProgress && !noProgress}
+        {#if noProgress}
+            <span>(no progress yet)</span>
+        {:else if inProgress && !noProgress}
             <div class="flex gap-1" class:mt-1={shouldWrap}>
                 {#each uniqueStaff as staff (staff.id)}
                     <Position position={staff.position} />

@@ -28,23 +28,31 @@
 </script>
 
 <div
-    class="sm:h-28 shadow rounded-b-md rounded-t-none overflow-hidden flex flex-row items-start bg-white relative border-t-2 border-green-500"
+    class="app-show shadow-md rounded-b-md rounded-t-none overflow-hidden flex flex-row items-start bg-white relative border-t-2 border-green-500"
 >
-    <div class="hidden sm:block h-28 w-24 overflow-hidden relative flex-none">
+    <div class="hidden sm:block w-24 mt-3 ml-3 mb-8 relative flex-none">
         <img
-            class="absolute bottom-0"
+            class="z-0 rounded-md"
             src={show.poster}
             alt="Poster for {show.name}"
         />
+        <div class="z-10 rounded-md absolute inset-0 shadow-inner" />
+        <div class="z-10 rounded-md absolute inset-0 shadow-inner" />
+        <div class="z-10 rounded-md absolute inset-0 shadow-inner" />
+        <div class="z-10 rounded-md absolute inset-0 shadow-inner" />
+        <div class="z-10 rounded-md absolute inset-0 shadow-inner" />
+        <div
+            class="app-poster-overlay z-20 rounded-md absolute inset-0 bg-black opacity-5 transition-opacity"
+        />
     </div>
-    <div class="text-xs h-full flex-grow px-3 pt-2 relative py-8 max-w-full">
+    <div
+        class="text-xs h-full flex-grow px-3 pt-2 py-8 max-w-full flex flex-col"
+    >
         <h1 class="text-gray-800 font-medium text-base">
             {show.name}
         </h1>
         {#if show.joint_groups.length > 0}
-            <span
-                class="hidden sm:block absolute right-3 top-1 text-xs text-gray-400 italic text-right"
-            >
+            <span class="hidden sm:block mt-1 text-xs text-gray-400 italic">
                 Joint with
                 {#each show.joint_groups as group (group.id)}
                     <span>
@@ -91,3 +99,9 @@
         {/if}
     </div>
 </div>
+
+<style>
+    .app-show:hover .app-poster-overlay {
+        @apply opacity-0;
+    }
+</style>

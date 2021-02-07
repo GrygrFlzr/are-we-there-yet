@@ -7,7 +7,7 @@ const dev = mode === 'development';
 
 module.exports = {
     plugins: [
-        tailwindcss,
+        tailwindcss('./tailwind.config.cjs'),
         autoprefixer,
 
         !dev &&
