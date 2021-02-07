@@ -57,7 +57,7 @@ export type Show = {
     id: number;
     name: string;
     status: string;
-    progress: string;
+    progress: 'Airing' | 'Complete' | 'Incomplete' | string;
     created_at: string;
     updated_at: string;
     poster: string;

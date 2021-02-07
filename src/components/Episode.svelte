@@ -28,7 +28,7 @@
 
 {#if episode}
     <div
-        class="flex text-sm text-gray-800 mt-2 {shouldWrap
+        class="text-gray-800 dark:text-gray-200 flex text-sm  mt-2 {shouldWrap
             ? 'flex-col'
             : 'flex-row'}"
         class:col-start-1={uniqueStaff.length > 4}
@@ -56,7 +56,7 @@
                 {/if}
             {/if}
         </span>
-        {#if noProgress}
+        {#if noProgress && aired}
             <span>(no progress yet)</span>
         {:else if inProgress && !noProgress}
             <div class="flex gap-1" class:mt-1={shouldWrap}>
@@ -67,7 +67,9 @@
         {/if}
     </div>
     {#if latest}
-        <div class="absolute bottom-2 left-3 text-xs text-gray-400">
+        <div
+            class="absolute bottom-2 left-3 text-xs text-gray-400 dark:text-gray-300"
+        >
             <div class="flex flex-row gap-1 text-left">
                 {#if status}
                     <!-- Status Tooltip -->
@@ -87,7 +89,9 @@
                 </span>
             </div>
         </div>
-        <div class="absolute bottom-2 right-3 text-xs text-gray-400">
+        <div
+            class="absolute bottom-2 right-3 text-xs text-gray-400 dark:text-gray-300"
+        >
             <div class="flex flex-row text-right">
                 <span>{episode.season}</span>
             </div>

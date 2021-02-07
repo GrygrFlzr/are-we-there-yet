@@ -1,10 +1,62 @@
+<script context="module">
+    export async function load({ page }) {
+        let theme = 'light';
+        let accent = 'green';
+        let size = 'normal';
+
+        const validThemes = ['light', 'dark'];
+        const validAccents = [
+            'red',
+            'yellow',
+            'green',
+            'blue',
+            'indigo',
+            'purple',
+            'pink',
+            'none',
+        ];
+        const validSizes = ['small', 'normal'];
+
+        if (page.query.has('theme')) {
+            const _theme = page.query.get('theme');
+            if (validThemes.includes(_theme)) {
+                theme = _theme;
+            }
+        }
+        if (page.query.has('accent')) {
+            const _accent = page.query.get('accent');
+            if (validAccents.includes(_accent)) {
+                accent = _accent;
+            }
+        }
+        if (page.query.has('size')) {
+            const _size = page.query.get('size');
+            if (validSizes.includes(_size)) {
+                size = _size;
+            }
+        }
+
+        return {
+            props: {
+                theme,
+                accent,
+                size,
+            },
+        };
+    }
+</script>
+
 <script>
     import { session } from '$app/stores';
-    import CheckCircle from '$components/Icon/CheckCircle.svelte';
-    import Exclamation from '$components/Icon/Exclamation.svelte';
+    import AllDone from '$components/AllDone.svelte';
+    import Error from '$components/Error.svelte';
     import Show from '$components/Show.svelte';
     import { byLatestEpisode } from '$components/utils';
     import { onMount, tick } from 'svelte';
+
+    export let theme = 'light';
+    export let accent = 'green';
+    export let size = 'normal';
 
     let divHeight;
 
@@ -33,39 +85,24 @@
 
 <div
     class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 px-1 pb-2 sm:px-2 sm:py-2 bg-transparent"
+    class:dark={theme === 'dark'}
     bind:clientHeight={divHeight}
 >
     {#each incompleteShows as show (show.id)}
-        <Show {show} />
+        <Show {show} {accent} />
     {:else}
         {#if $session.message}
             <!-- Error -->
-            <div
-                class="bg-white shadow pt-2 pb-1 px-3 rounded-t-none rounded-b-md flex flex-row border-t-2 border-yellow-500"
-            >
-                <div class="h-12 w-12 flex-none text-yellow-500">
-                    <Exclamation />
-                </div>
-                <div class="px-3">
-                    <h1 class="text-gray-700">Connection error</h1>
-                    <h3 class="text-xs text-gray-500">{$session.message}</h3>
-                </div>
-            </div>
+            <Error message={$session.message} />
         {:else}
             <!-- No incomplete shows -->
-            <div
-                class="bg-white shadow pt-2 pb-1 px-3 rounded-t-none rounded-b-md flex flex-row border-t-2 border-green-500"
-            >
-                <div class="h-12 w-12 flex-none text-green-500">
-                    <CheckCircle />
-                </div>
-                <div class="px-3">
-                    <h1 class="text-gray-700">100%</h1>
-                    <h3 class="text-xs text-gray-500">
-                        All shows are complete!
-                    </h3>
-                </div>
-            </div>
+            <AllDone />
         {/if}
     {/each}
 </div>
+
+{#if size === 'small'}<style>
+        :root {
+            font-size: 12px;
+        }
+    </style>{/if}

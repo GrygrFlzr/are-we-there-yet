@@ -8,4 +8,5 @@ node_modules
 /public
 .vercelignore
 .vercel
+.vercel_build_output
 vercel.json

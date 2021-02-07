@@ -8,7 +8,23 @@
         notYetReleased,
     } from '$components/utils';
 
+    const accentOptions = {
+        red: 'rounded-t-none border-t-2 border-red-500 dark:border-red-400',
+        yellow:
+            'rounded-t-none border-t-2 border-yellow-500 dark:border-yellow-400',
+        green:
+            'rounded-t-none border-t-2 border-green-500 dark:border-green-400',
+        blue: 'rounded-t-none border-t-2 border-blue-500 dark:border-blue-400',
+        indigo:
+            'rounded-t-none border-t-2 border-indigo-500 dark:border-indigo-400',
+        purple:
+            'rounded-t-none border-t-2 border-purple-500 dark:border-purple-400',
+        pink: 'rounded-t-none border-t-2 border-pink-500 dark:border-pink-400',
+        none: 'border-none',
+    };
+
     export let show;
+    export let accent = 'green';
 
     let expanded = false;
 
@@ -28,7 +44,9 @@
 </script>
 
 <div
-    class="app-show shadow-md rounded-b-md rounded-t-none overflow-hidden flex flex-row items-start bg-white relative border-t-2 border-green-500"
+    class="app-show shadow-md rounded-md overflow-hidden flex flex-row items-start relative bg-white dark:bg-gray-700 {accentOptions[
+        accent
+    ]}"
 >
     <div class="hidden sm:block w-24 mt-3 ml-3 mb-8 relative flex-none">
         <img
@@ -48,11 +66,13 @@
     <div
         class="text-xs h-full flex-grow px-3 pt-2 py-8 max-w-full flex flex-col"
     >
-        <h1 class="text-gray-800 font-medium text-base">
+        <h1 class="font-medium text-base text-gray-800 dark:text-gray-100">
             {show.name}
         </h1>
         {#if show.joint_groups.length > 0}
-            <span class="hidden sm:block mt-1 text-xs text-gray-400 italic">
+            <span
+                class="hidden sm:block mt-1 text-xs italic text-gray-400 dark:text-gray-300"
+            >
                 Joint with
                 {#each show.joint_groups as group (group.id)}
                     <span>
@@ -73,7 +93,7 @@
                 {/each}
             </div>
             <button
-                class="flex flex-row mt-2 text-gray-500 hover:text-gray-400 transition-colors"
+                class="flex flex-row mt-2 text-gray-500 hover:text-gray-400 dark:text-gray-200 transition-colors"
                 on:click={toggleExpand}
             >
                 <div class="h-5 w-5">
@@ -85,7 +105,7 @@
             <Episode episode={latest} status={show.status} latest={true} />
             {#if unfinishedEpisodes.length > 1}
                 <button
-                    class="flex flex-row mt-2 text-blue-500 hover:text-blue-400 transition-colors"
+                    class="flex flex-row mt-2 text-blue-500 hover:text-blue-400 dark:text-blue-300 transition-colors"
                     on:click={toggleExpand}
                 >
                     <div class="h-5 w-5">

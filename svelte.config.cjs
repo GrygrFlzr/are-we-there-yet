@@ -4,7 +4,7 @@ let adapter = '@sveltejs/adapter-node';
 if (process.env.ADAPTER) {
     switch (process.env.ADAPTER.toLowerCase()) {
         case 'vercel':
-            // TODO: Replace with custom adapter
+            // TODO: Replace with vercel adapter
             adapter = '@sveltejs/adapter-static';
             break;
         case 'netlify':

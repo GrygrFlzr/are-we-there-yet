@@ -51,7 +51,7 @@ Your application will be statically generated every time your group's projects a
 10. Under **Build & deploy**, scroll down to **Build hooks** and click **Add build hook**.
 11. Set the name to something descriptive like `Deschtimes` and keep the branch to `main`. Hit save and copy the URL.
 12. Log in to Deschtimes and go to your Group page. Under **Webhooks**, click **Manage**.
-13. Click **Add Webhook**. Use a descriptive name like `Netlify`, and paste the URL you obtained from step 11. Leave the platform as **Generic**, press **Create Webhook**.
+13. Click **Add Webhook**. Use a descriptive name like `Netlify`, and paste the URL you obtained from step 11. Change the platform to **Discord**, press **Create Webhook**.
     -->
 
 Your application will be _dynamically_ generated every time you recieve a request.
@@ -86,40 +86,11 @@ Your application will be _dynamically_ generated every time you recieve a reques
 
 ## Wordpress HTML Widget
 
-After deploying to one of the options above, adjust the following script.
+After deploying to one of the options above, open the `/config` page of your newly deployed application.
 
-Replace both instances of `http://localhost:4100` with your application (e.g. `https://blah-blah-1234.netlify.com`)
+For example if your site is `https://blah-blah-1234.netlify.com`, then you should go to `https://blah-blah-1234.netlify.com/config` to configure your embed.
 
-```html
-<script>
-    /**
-     * Resize the iframe after page load
-     */
-    window.addEventListener(
-        'message',
-        function (event) {
-            if (event.origin !== 'http://localhost:4100') {
-                return;
-            }
-
-            const data = JSON.parse(event.data);
-            const iframe = document.getElementById('areWeThereYet');
-            if (data.action === 'resize') {
-                iframe.height = data.height;
-                iframe.style.opacity = '1';
-            }
-        },
-        false
-    );
-</script>
-<iframe
-    id="areWeThereYet"
-    src="http://localhost:4100"
-    allowtransparency="true"
-    frameborder="0"
-    style="opacity: 0; min-width: 100%;"
-></iframe>
-```
+The configuration page contains a live preview of what various states of the application will look like, or you can also see what your specific group data will look like by clicking **Go to page**.
 
 # License
 
