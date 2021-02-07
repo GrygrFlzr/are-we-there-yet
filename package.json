@@ -14,6 +14,8 @@
         "build:netlify:bodge:1": "mv ./functions/render/app.cjs ./functions/render/app.js",
         "build:netlify:bodge:2": "mv ./functions/render/app.cjs.map ./functions/render/app.js.map",
         "build:vercel": "cross-env ADAPTER=vercel npm run build",
+        "build:static": "cross-env ADAPTER=static npm run build",
+        "clean": "rm -rf .svelte build functions api public .vercelignore vercel.json",
         "start": "env-cmd --silent svelte-kit start"
     },
     "dependencies": {

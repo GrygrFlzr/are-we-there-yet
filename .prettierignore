@@ -4,3 +4,7 @@ package-lock.json
 /.svelte
 /build
 /functions
+/api
+/public
+vercel.json
+.vercelignore
