@@ -2,7 +2,8 @@ import type { Language } from '$components/Lang/builder';
 import en from '$components/Lang/en';
 import id from '$components/Lang/id';
 import ru from '$components/Lang/ru';
-import he from '$components/Lang/ru';
+import he from '$components/Lang/he';
+import pl from '$components/Lang/pl';
 import TimeAgo from 'javascript-time-ago';
 
 TimeAgo.addLocale(en.anime_airing.locale);
@@ -21,8 +22,8 @@ type ConfigNames =
     | 'manga_chapter'
     | 'manga_volume';
 
-export const languages = [en, id, ru, he];
-export const languageNames = ['en', 'id', 'ru', 'he'];
+export const languages = [en, id, ru, he, pl];
+export const languageNames = ['en', 'id', 'ru', 'he', 'pl'];
 export function createLocalization(
     lang_locale: string = 'en',
     context: ConfigNames = 'anime_airing'
