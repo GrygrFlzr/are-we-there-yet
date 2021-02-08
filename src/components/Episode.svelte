@@ -13,7 +13,7 @@
 
     const lang = getContext('lang');
 
-    const { timeAgo } = createLocalization(lang);
+    const { timeAgo } = createLocalization($lang);
 
     export let episode;
     export let status;

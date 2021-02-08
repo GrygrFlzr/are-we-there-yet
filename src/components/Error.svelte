@@ -1,5 +1,6 @@
 <script>
     import Exclamation from '$components/Icon/Exclamation.svelte';
+    import Localized from '$components/Lang/Localized.svelte';
 
     export let message;
 </script>
@@ -12,7 +13,7 @@
     </div>
     <div class="px-3">
         <h1 class="font-medium text-gray-700 dark:text-gray-100">
-            Connection error
+            <Localized key="CONNECTION_ERROR" />
         </h1>
         <h3 class="text-xs text-gray-500 dark:text-gray-300">{message}</h3>
     </div>

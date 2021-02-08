@@ -3,7 +3,6 @@
     import { getContext } from 'svelte';
 
     const lang = getContext('lang');
-    const { localize } = createLocalization(lang);
 
     let key = '';
     let className = '';
@@ -29,6 +28,8 @@
         }
         innerHTML = htmlString;
     }
+    $: localization = createLocalization($lang);
+    $: localize = localization.localize;
 </script>
 
 <div class="hidden">

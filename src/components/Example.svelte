@@ -3,6 +3,7 @@
     import Error from '$components/Error.svelte';
     import Show from '$components/Show.svelte';
     import Position from '$components/Position.svelte';
+    import Localized from '$components/Lang/Localized.svelte';
 
     export let accent;
 
@@ -201,7 +202,9 @@
     <AllDone />
     <div>
         <div class="rounded shadow-md px-4 py-4 bg-white dark:bg-gray-700">
-            <h3 class="text-center text-xl pb-3">All Positions</h3>
+            <h3 class="text-center text-xl pb-3">
+                <Localized key="ALL_POSITIONS" />
+            </h3>
             <div class="flex gap-1 justify-center text-sm">
                 {#each positions as position (position.id)}
                     <Position {position} />

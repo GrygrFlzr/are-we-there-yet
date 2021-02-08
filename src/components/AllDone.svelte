@@ -1,5 +1,6 @@
 <script>
     import CheckCircle from '$components/Icon/CheckCircle.svelte';
+    import Localized from '$components/Lang/Localized.svelte';
 </script>
 
 <div
@@ -11,7 +12,7 @@
     <div class="px-3">
         <h1 class="font-medium text-gray-700 dark:text-gray-100">100%</h1>
         <h3 class="text-xs text-gray-500 dark:text-gray-300">
-            All shows are complete!
+            <Localized key="ALL_COMPLETE" />
         </h3>
     </div>
 </div>

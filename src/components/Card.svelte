@@ -1,4 +1,6 @@
 <script>
+    import Localized from '$components/Lang/Localized.svelte';
+
     export let theme = 'light';
     export let header;
 </script>
@@ -9,9 +11,9 @@
             {#if header}
                 {header}
             {:else if theme === 'light'}
-                Light theme
+                <Localized key="THEME_LIGHT" />
             {:else}
-                Dark theme
+                <Localized key="THEME_DARK" />
             {/if}
         </h1>
         <slot />

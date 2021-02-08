@@ -63,11 +63,12 @@
     import Show from '$components/Show.svelte';
     import { byLatestEpisode } from '$components/utils';
     import { onMount, tick, setContext } from 'svelte';
+    import { writable } from 'svelte/store';
 
     export let theme = 'light';
     export let accent = 'green';
     export let size = 'normal';
-    export let lang = 'en';
+    export let lang = writable('en');
 
     setContext('lang', lang);
 
@@ -94,7 +95,6 @@
         .filter((show) => show.progress !== 'Complete')
         .sort(byLatestEpisode);
     $: divHeight, messageParentAboutResize();
-    $: console.log('lang', lang);
 </script>
 
 <div
