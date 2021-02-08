@@ -105,6 +105,8 @@ const strings: Strings = {
     EMBED_HIDE: `Sembunyikan kode embed`,
     // Example
     ALL_POSITIONS: `Semua Posisi Staf`,
+    EXAMPLE_ERROR: `Ini adalah contoh kesalahan`,
+    EXAMPLE_STATUS: `Ini adalah pesan status opsional`,
 
     /**
      * Unit (e.g. Show)

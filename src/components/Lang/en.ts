@@ -105,6 +105,8 @@ const strings: Strings = {
     EMBED_HIDE: `Hide embed code`,
     // Example
     ALL_POSITIONS: `All Staff Positions`,
+    EXAMPLE_ERROR: `This is an example error`,
+    EXAMPLE_STATUS: `This is an example optional status message`,
 
     /**
      * Unit (e.g. Show)

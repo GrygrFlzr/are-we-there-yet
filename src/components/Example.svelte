@@ -3,7 +3,11 @@
     import Error from '$components/Error.svelte';
     import Show from '$components/Show.svelte';
     import Position from '$components/Position.svelte';
+    import { createLocalization } from '$components/Lang';
     import Localized from '$components/Lang/Localized.svelte';
+    import { getContext } from 'svelte';
+
+    const lang = getContext('lang');
 
     export let accent;
 
@@ -11,10 +15,53 @@
     const two_hours_ago = new Date(new Date().getTime() - two_hours);
     const in_two_hours = new Date(new Date().getTime() + two_hours);
 
-    const exampleShow = {
+    const positions = [
+        {
+            id: 1,
+            name: 'Translation',
+            acronym: 'TL',
+        },
+        {
+            id: 2,
+            name: 'Translator Check',
+            acronym: 'TLC',
+        },
+        {
+            id: 3,
+            name: 'Encode',
+            acronym: 'ENC',
+        },
+        {
+            id: 4,
+            name: 'Editing',
+            acronym: 'ED',
+        },
+        {
+            id: 5,
+            name: 'Timing',
+            acronym: 'TM',
+        },
+        {
+            id: 6,
+            name: 'Typesetting',
+            acronym: 'TS',
+        },
+        {
+            id: 7,
+            name: 'Quality Control',
+            acronym: 'QC',
+        },
+        {
+            id: 8,
+            name: 'Custom Position Example',
+            acronym: 'KFX',
+        },
+    ];
+    $: localize = createLocalization($lang).localize;
+    $: exampleShow = {
         id: 1,
         name: 'The Wonderful Life of Furballs',
-        status: 'This is an example optional status message',
+        status: localize('EXAMPLE_STATUS'),
         progress: 'Airing',
         created_at: two_hours_ago.toISOString(),
         updated_at: two_hours_ago.toISOString(),
@@ -151,54 +198,11 @@
             },
         ],
     };
-
-    const positions = [
-        {
-            id: 1,
-            name: 'Translation',
-            acronym: 'TL',
-        },
-        {
-            id: 2,
-            name: 'Translator Check',
-            acronym: 'TLC',
-        },
-        {
-            id: 3,
-            name: 'Encode',
-            acronym: 'ENC',
-        },
-        {
-            id: 4,
-            name: 'Editing',
-            acronym: 'ED',
-        },
-        {
-            id: 5,
-            name: 'Timing',
-            acronym: 'TM',
-        },
-        {
-            id: 6,
-            name: 'Typesetting',
-            acronym: 'TS',
-        },
-        {
-            id: 7,
-            name: 'Quality Control',
-            acronym: 'QC',
-        },
-        {
-            id: 8,
-            name: 'Custom Position Example',
-            acronym: 'KFX',
-        },
-    ];
 </script>
 
 <div class="app-example grid grid-cols-1 gap-2 m-auto">
     <Show show={exampleShow} {accent} />
-    <Error message="This is an example error" />
+    <Error message={localize('EXAMPLE_ERROR')} />
     <AllDone />
     <div>
         <div class="rounded shadow-md px-4 py-4 bg-white dark:bg-gray-700">

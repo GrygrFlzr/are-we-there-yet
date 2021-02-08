@@ -19,8 +19,7 @@ TimeAgo.setDefaultLocale(en.anime_airing.locale.locale);
 function localizeTo(language: Language, reference: string) {
     return (
         language.strings[reference] ||
-        en.anime_airing[reference] ||
-        'Unknown localization code used.'
+        `untranslated ${reference} for language ${language.locale.locale}`
     );
 }
 
