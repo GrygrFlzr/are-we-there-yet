@@ -7,14 +7,21 @@ import pl from '$components/Lang/pl';
 import fi from '$components/Lang/fi';
 import TimeAgo from 'javascript-time-ago';
 
-TimeAgo.addLocale(en.anime_airing.locale);
-TimeAgo.addLocale(id.anime_airing.locale);
-TimeAgo.addLocale(ru.anime_airing.locale);
-TimeAgo.addLocale(he.anime_airing.locale);
+export const languages = [en, id, ru, he, pl, fi];
+export const languageNames = languages.map(
+    (language) => language.anime_airing.locale.locale
+);
+for (const language of languages) {
+    TimeAgo.addLocale(language.anime_airing.locale);
+}
 TimeAgo.setDefaultLocale(en.anime_airing.locale.locale);
 
 function localizeTo(language: Language, reference: string) {
-    return language.strings[reference] || 'Unknown localization code used.';
+    return (
+        language.strings[reference] ||
+        en.anime_airing[reference] ||
+        'Unknown localization code used.'
+    );
 }
 
 type ConfigNames =
@@ -23,8 +30,6 @@ type ConfigNames =
     | 'manga_chapter'
     | 'manga_volume';
 
-export const languages = [en, id, ru, he, pl, fi];
-export const languageNames = ['en', 'id', 'ru', 'he', 'pl', 'fi'];
 export function createLocalization(
     lang_locale: string = 'en',
     context: ConfigNames = 'anime_airing'

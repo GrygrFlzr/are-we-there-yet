@@ -13,8 +13,6 @@
 
     const lang = getContext('lang');
 
-    const { timeAgo } = createLocalization($lang);
-
     export let episode;
     export let status;
     export let latest = false;
@@ -30,6 +28,8 @@
         episode.staff.filter((staff) => !staff.finished)
     );
     $: shouldWrap = inList || uniqueStaff.length > 5;
+    $: timeAgo = createLocalization($lang).timeAgo;
+    $: console.log($lang);
 </script>
 
 {#if episode}
