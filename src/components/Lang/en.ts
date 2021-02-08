@@ -5,15 +5,56 @@ import {
     languageBuilder,
 } from '$components/Lang/builder';
 
-const anime: Config = {
+const anime_airing: Config = {
     UNIT_SINGULAR: `show`,
     UNIT_PLURAL: `shows`,
     UNIT_SHORT: `Show`,
     SUBUNIT_SINGULAR: `episode`,
     SUBUNIT_PLURAL: `episodes`,
     SUBUNIT_SHORT: `Ep.`,
+    // e.g. Ep. 1 airs in 3 days
     SUBUNIT_VERB_FUTURE: `airs`,
+    // e.g. Ep. 2 aired 2 hours ago
     SUBUNIT_VERB_PAST: `aired`,
+};
+
+const anime_bluray: Config = {
+    UNIT_SINGULAR: `show`,
+    UNIT_PLURAL: `shows`,
+    UNIT_SHORT: `Show`,
+    SUBUNIT_SINGULAR: `volume`,
+    SUBUNIT_PLURAL: `volumes`,
+    SUBUNIT_SHORT: `Vol.`,
+    // e.g. Vol. 1 drops in 3 days
+    SUBUNIT_VERB_FUTURE: `drops`,
+    // e.g. Vol. 2 published 2 hours ago
+    SUBUNIT_VERB_PAST: `published`,
+};
+
+const manga_chapter: Config = {
+    UNIT_SINGULAR: `manga`,
+    UNIT_PLURAL: `manga`,
+    UNIT_SHORT: `Manga`,
+    SUBUNIT_SINGULAR: `chapter`,
+    SUBUNIT_PLURAL: `chapters`,
+    SUBUNIT_SHORT: `Ch.`,
+    // e.g. Ch. 1 drops in 3 days
+    SUBUNIT_VERB_FUTURE: `drops`,
+    // e.g. Ch. 2 published 2 hours ago
+    SUBUNIT_VERB_PAST: `published`,
+};
+
+const manga_volume: Config = {
+    UNIT_SINGULAR: `manga`,
+    UNIT_PLURAL: `manga`,
+    UNIT_SHORT: `Manga`,
+    SUBUNIT_SINGULAR: `volume`,
+    SUBUNIT_PLURAL: `volumes`,
+    SUBUNIT_SHORT: `Vol.`,
+    // e.g. Vol. 1 drops in 3 days
+    SUBUNIT_VERB_FUTURE: `drops`,
+    // e.g. Vol. 2 published 2 hours ago
+    SUBUNIT_VERB_PAST: `published`,
 };
 
 const strings: Strings = {
@@ -103,4 +144,9 @@ const lang: Language = {
     strings: strings,
 };
 
-export default languageBuilder(lang, anime);
+export default {
+    anime_airing: languageBuilder(lang, anime_airing),
+    anime_bluray: languageBuilder(lang, anime_bluray),
+    manga_chapter: languageBuilder(lang, manga_chapter),
+    manga_volume: languageBuilder(lang, manga_volume),
+};
