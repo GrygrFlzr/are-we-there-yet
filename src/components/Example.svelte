@@ -200,7 +200,7 @@
     <Error message="This is an example error" />
     <AllDone />
     <div>
-        <div class="rounded shadow-md px-4 py-4 bg-white dark:bg-gray-600">
+        <div class="rounded shadow-md px-4 py-4 bg-white dark:bg-gray-700">
             <h3 class="text-center text-xl pb-3">All Positions</h3>
             <div class="flex gap-1 justify-center text-sm">
                 {#each positions as position (position.id)}

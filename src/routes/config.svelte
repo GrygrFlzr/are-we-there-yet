@@ -79,7 +79,7 @@
     <div class="m-auto container grid sm:grid-cols-2 gap-4 py-4">
         <div class="sm:col-span-2">
             <Card header="Configuration" {theme}>
-                <div class="grid md:grid-cols-4 gap-6">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div>
                         <h3 class="text-2xl">Website Settings</h3>
                         <p class="mt-2">Your application URL</p>
@@ -178,7 +178,7 @@
                             {/each}
                         </div>
                     </div>
-                    <div class="md:col-span-4">
+                    <div class="sm:col-span-2 lg:col-span-4">
                         <h3 class="text-2xl mb-2">Wordpress Embed Code</h3>
                         {#if expanded}
                             <button

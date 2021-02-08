@@ -5,7 +5,7 @@
 </script>
 
 <div
-    class="shadow pt-2 pb-1 px-3 rounded-t-none rounded-b-md flex flex-row border-t-2 bg-white border-yellow-500 dark:bg-gray-600 dark:border-yellow-200"
+    class="shadow pt-2 pb-1 px-3 rounded-t-none rounded-b-md flex flex-row border-t-2 bg-white border-yellow-500 dark:bg-gray-700 dark:border-yellow-200"
 >
     <div class="h-12 w-12 flex-none text-yellow-500 dark:text-yellow-200">
         <Exclamation />
