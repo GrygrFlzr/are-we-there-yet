@@ -1,3 +1,9 @@
+/**
+ * Russian Translation
+ * @author asakurato <begijanovigiorgi@gmail.com>
+ * @author JohnnyZB <50960476+JohnnyZB@users.noreply.github.com>
+ */
+
 import {
     Config,
     Strings,

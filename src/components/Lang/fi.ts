@@ -1,3 +1,8 @@
+/**
+ * Finnish translation
+ * @author petzku <petzku@zku.fi>
+ */
+
 import {
     Config,
     Strings,

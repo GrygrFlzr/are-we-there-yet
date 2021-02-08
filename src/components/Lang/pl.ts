@@ -1,3 +1,8 @@
+/**
+ * Polish Translation
+ * @author Cruci <70847650+Cruicead@users.noreply.github.com>
+ */
+
 import {
     Config,
     Strings,

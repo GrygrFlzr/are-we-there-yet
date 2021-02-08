@@ -1,3 +1,8 @@
+/**
+ * Indonesian Translation
+ * @author GrygrFlzr <grygrflzr@hotmail.com>
+ */
+
 import {
     Config,
     Strings,

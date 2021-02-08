@@ -1,3 +1,8 @@
+/**
+ * Spanish translation
+ * @author Delt <deltkastel@gmail.com>
+ */
+
 import {
     Config,
     Strings,

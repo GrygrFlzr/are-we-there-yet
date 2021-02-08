@@ -1,3 +1,8 @@
+/**
+ * Hebrew Translation
+ * @author TsUNaMy WaVe <souseisekiftw@gmail.com>
+ */
+
 import {
     Config,
     Strings,

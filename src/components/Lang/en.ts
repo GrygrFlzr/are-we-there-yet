@@ -1,3 +1,8 @@
+/**
+ * English base
+ * @author GrygrFlzr <grygrflzr@hotmail.com>
+ */
+
 import {
     Config,
     Strings,
