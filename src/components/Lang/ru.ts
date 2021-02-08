@@ -1,0 +1,152 @@
+import {
+    Config,
+    Strings,
+    Language,
+    languageBuilder,
+} from '$components/Lang/builder';
+
+const anime_airing: Config = {
+    UNIT_SINGULAR: `Сериал`,
+    UNIT_PLURAL: `Сериалы`,
+    UNIT_SHORT: `Сериал`,
+    SUBUNIT_SINGULAR: `Серию`,
+    SUBUNIT_PLURAL: `Серии`,
+    SUBUNIT_SHORT: `Сер.`,
+    // e.g. Ep. 1 airs in 3 days
+    SUBUNIT_VERB_FUTURE: `Выходит`,
+    // e.g. Ep. 2 aired 2 hours ago
+    SUBUNIT_VERB_PAST: `Вышла`,
+};
+
+const anime_bluray: Config = {
+    UNIT_SINGULAR: `Сериал`,
+    UNIT_PLURAL: `Сериалы`,
+    UNIT_SHORT: `Сериал`,
+    SUBUNIT_SINGULAR: `Том`,
+    SUBUNIT_PLURAL: `Тома`,
+    SUBUNIT_SHORT: `Том`,
+    // e.g. Vol. 1 drops in 3 days
+    SUBUNIT_VERB_FUTURE: `Выходит`,
+    // e.g. Vol. 2 published 2 hours ago
+    SUBUNIT_VERB_PAST: `Вышел`,
+};
+
+const manga_chapter: Config = {
+    UNIT_SINGULAR: `Манга`,
+    UNIT_PLURAL: `Манги`,
+    UNIT_SHORT: `Манга`,
+    SUBUNIT_SINGULAR: `глава`,
+    SUBUNIT_PLURAL: `главы`,
+    SUBUNIT_SHORT: `Гл.`,
+    // e.g. Ch. 1 drops in 3 days
+    SUBUNIT_VERB_FUTURE: `Выхолит`,
+    // e.g. Ch. 2 published 2 hours ago
+    SUBUNIT_VERB_PAST: `Опубликована`,
+};
+
+const manga_volume: Config = {
+    UNIT_SINGULAR: `Манга`,
+    UNIT_PLURAL: `Манги`,
+    UNIT_SHORT: `Манга`,
+    SUBUNIT_SINGULAR: `Том`,
+    SUBUNIT_PLURAL: `Тома`,
+    SUBUNIT_SHORT: `Том`,
+    // e.g. Vol. 1 drops in 3 days
+    SUBUNIT_VERB_FUTURE: `Выходит`,
+    // e.g. Vol. 2 published 2 hours ago
+    SUBUNIT_VERB_PAST: `Опубликован`,
+};
+
+const strings: Strings = {
+    /**
+     * States without any projects
+     */
+    // Empty state
+    ALL_COMPLETE: `Все проекты завершены!`,
+    // Error state
+    CONNECTION_ERROR: `Сбой связи`,
+
+    /**
+     * Configuration Page
+     */
+    CONFIG_HEADER: `Конфигурация`,
+    // Website section
+    WEBSITE_SETTINGS_HEADER: `Параметры Сайта`,
+    APP_URL: `Адресс вашей программы`,
+    LINK_PAGE: `Перейти на страницу`,
+    PAGE_BGCOLOR: `Цвет фона главного сайта`,
+    NO_COLOR: `Игнорировать цвет фона`,
+    RECOMMENDED_BGCOLOR: `Рекомендованный цвет фона`,
+    OVERRIDE_BGCOLOR: `Override recommendation`,
+    // Theme section
+    THEME_HEADER: `Выбор темы`,
+    THEME_LIGHT: `Светлая`,
+    THEME_DARK: `Темная`,
+    // Size section
+    SIZE_HEADER: `Выбор размера`,
+    SIZE_SMALL: `Маленький (Не рекомендовано)`,
+    SIZE_NORMAL: `Нормальный`,
+    // Accent section
+    ACCENT_HEADER: `Цвет акцента`, // (not sure about this)
+    ACCENT_RED: `Красный`,
+    ACCENT_YELLOW: `Желтый`,
+    ACCENT_GREEN: `Зеленый`,
+    ACCENT_BLUE: `Синий`,
+    ACCENT_INDIGO: `Индиго`,
+    ACCENT_PURPLE: `Фиолетовый`,
+    ACCENT_PINK: `Розовый`,
+    ACCENT_NONE: `Ни один (or Никакой)`,
+    // Language section
+    LANGUAGE_HEADER: `Язык`,
+    // Description in Wordpress embed code
+    EMBED_HEADER: `Wordpress Embed Code`, // (not sure how this would be translated)
+    EMBED_DESCRIPTION: `Resize the iframe after page load`, // (not sure how this would be translated)
+    EMBED_SHOW: `Показать вставленный код`,
+    EMBED_HIDE: `Скрыть вставленный код`,
+    // Example
+    ALL_POSITIONS: `Все позиции персонала`,
+
+    /**
+     * Unit (e.g. Show)
+     * {0} = list of groups
+     * {1} = number of remaining units
+     * {2} = relative time
+     */
+    UNIT_JOINT_WITH: `Совместно с {0}`,
+    UNIT_SHOW_LESS: `Показать меньше`,
+    UNIT_SHOW_REMAINDER_SINGULAR: `Показать еще {1} %SUBUNIT_SINGULAR%...`,
+    // e.g. Show 2 more episodes...
+    UNIT_SHOW_REMAINDER_PLURAL: `Показать еще {1} %SUBUNIT_PLURAL%...`,
+    // e.g. Updated 5 hours ago
+    UNIT_UPDATED: `Обновленно {2}`,
+
+    /**
+     * Subunit (e.g. Episode)
+     * {0} = subunit number
+     * {1} = relative time
+     * {2} = list of positions
+     */
+    // e.g. Ep. 1 airs in 5 days
+    SUBUNIT_NOT_PUBLISHED: `%SUBUNIT_SHORT% {0} %SUBUNIT_VERB_FUTURE% {1}`,
+    // e.g. Ep. 1 aired 4 days ago
+    SUBUNIT_WAS_PUBLISHED: `%SUBUNIT_SHORT% {0} %SUBUNIT_VERB_PAST% {1}`,
+    // shown when all positions are marked complete
+    SUBUNIT_TO_RELEASE: `%SUBUNIT_SHORT% {0} будет выпущена`,
+    // shown when there are unfinished positions
+    SUBUNIT_IN_PROGRESS: `%SUBUNIT_SHORT% {0} требует {2}`,
+    // shown when all positions are marked incomplete after publication
+    SUBUNIT_NO_PROGRESS: `(Прогреса нет)`,
+};
+
+import ru from 'javascript-time-ago/locale/ru';
+const lang: Language = {
+    locale: ru,
+    strings: strings,
+};
+
+export default {
+    anime_airing: languageBuilder(lang, anime_airing),
+    anime_bluray: languageBuilder(lang, anime_bluray),
+    manga_chapter: languageBuilder(lang, manga_chapter),
+    manga_volume: languageBuilder(lang, manga_volume),
+};
