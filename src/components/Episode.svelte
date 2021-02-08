@@ -6,8 +6,14 @@
         deduplicateStaff,
         hasAired,
         someMarked,
-        timeAgo,
     } from '$components/utils';
+    import { createLocalization } from '$components/Lang';
+    import Localized from '$components/Lang/Localized.svelte';
+    import { getContext } from 'svelte';
+
+    const lang = getContext('lang');
+
+    const { timeAgo } = createLocalization(lang);
 
     export let episode;
     export let status;
@@ -34,36 +40,34 @@
         class:col-start-1={uniqueStaff.length > 4}
         class:col-end-3={uniqueStaff.length > 4}
     >
-        <span class="whitespace-nowrap">
-            Ep. {episode.number}
-            {#if !aired}
-                airs
-                <time datetime={episode.air_date}>
+        {#if !aired}
+            <Localized key="SUBUNIT_NOT_PUBLISHED">
+                <span slot="0">{episode.number}</span>
+                <time slot="1" datetime={episode.air_date}>
                     {timeAgo.format(new Date(episode.air_date))}
                 </time>
-            {:else if waitingOnRelease}
-                to be released
-            {:else if noProgress}
-                aired
-                <time datetime={episode.air_date}>
+            </Localized>
+        {:else if waitingOnRelease}
+            <Localized key="SUBUNIT_TO_RELEASE">
+                <span slot="0">{episode.number}</span>
+            </Localized>
+        {:else if noProgress}
+            <Localized key="SUBUNIT_WAS_PUBLISHED">
+                <span slot="0">{episode.number}</span>
+                <time slot="1" datetime={episode.air_date}>
                     {timeAgo.format(new Date(episode.air_date))}
                 </time>
-            {:else if inProgress}
-                {#if shouldWrap}
-                    is waiting on
-                {:else}
-                    requires&nbsp;
-                {/if}
-            {/if}
-        </span>
-        {#if noProgress && aired}
-            <span>(no progress yet)</span>
-        {:else if inProgress && !noProgress}
-            <div class="flex gap-1" class:mt-1={shouldWrap}>
-                {#each uniqueStaff as staff (staff.id)}
-                    <Position position={staff.position} />
-                {/each}
-            </div>
+            </Localized>
+            <Localized key="SUBUNIT_NO_PROGRESS" />
+        {:else if inProgress}
+            <Localized key="SUBUNIT_IN_PROGRESS">
+                <span slot="0">{episode.number}</span>
+                <div slot="2" class="flex gap-1 mt-1">
+                    {#each uniqueStaff as staff (staff.id)}
+                        <Position position={staff.position} />
+                    {/each}
+                </div>
+            </Localized>
         {/if}
     </div>
     {#if latest}
@@ -85,7 +89,11 @@
                     </span>
                 {/if}
                 <span>
-                    Updated {timeAgo.format(new Date(episode.updated_at))}
+                    <Localized key="UNIT_UPDATED">
+                        <time slot="2" datetime={episode.updated_at}>
+                            {timeAgo.format(new Date(episode.updated_at))}
+                        </time>
+                    </Localized>
                 </span>
             </div>
         </div>

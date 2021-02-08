@@ -7,6 +7,7 @@
         latestEpisode,
         notYetReleased,
     } from '$components/utils';
+    import Localized from '$components/Lang/Localized.svelte';
 
     const accentOptions = {
         red: 'rounded-t-none border-t-2 border-red-500 dark:border-red-400',
@@ -70,16 +71,18 @@
             {show.name}
         </h1>
         {#if show.joint_groups.length > 0}
-            <span
+            <Localized
+                key="UNIT_JOINT_WITH"
                 class="hidden sm:block mt-1 text-xs italic text-gray-400 dark:text-gray-300"
             >
-                Joint with
-                {#each show.joint_groups as group (group.id)}
-                    <span>
-                        {group.name}
-                    </span>
-                {/each}
-            </span>
+                <span slot="0">
+                    {#each show.joint_groups as group (group.id)}
+                        <span>
+                            {group.name}
+                        </span>
+                    {/each}
+                </span>
+            </Localized>
         {/if}
         {#if expanded}
             <div class="grid grid-cols-2 justify-between">
@@ -99,7 +102,7 @@
                 <div class="h-5 w-5">
                     <ChevronUpSmall />
                 </div>
-                Show less
+                <Localized key="UNIT_SHOW_LESS" />
             </button>
         {:else}
             <Episode episode={latest} status={show.status} latest={true} />
@@ -111,9 +114,15 @@
                     <div class="h-5 w-5">
                         <ChevronDownSmall />
                     </div>
-                    Show {moreNumber} more episode{moreNumber === 1
-                        ? ''
-                        : 's'}...
+                    {#if moreNumber === 1}
+                        <Localized key="UNIT_SHOW_REMAINDER_SINGULAR">
+                            <span slot="1">{moreNumber}</span>
+                        </Localized>
+                    {:else}
+                        <Localized key="UNIT_SHOW_REMAINDER_PLURAL">
+                            <span slot="1">{moreNumber}</span>
+                        </Localized>
+                    {/if}
                 </button>
             {/if}
         {/if}

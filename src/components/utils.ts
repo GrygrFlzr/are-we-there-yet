@@ -1,10 +1,3 @@
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en';
-TimeAgo.addLocale(en);
-TimeAgo.setDefaultLocale('en');
-
-export const timeAgo = new TimeAgo();
-
 export function byLatestDate(paramName: string) {
     return (a: Record<string, any>, b: Record<string, any>) =>
         new Date(b[paramName]).getTime() - new Date(a[paramName]).getTime();

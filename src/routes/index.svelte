@@ -1,8 +1,11 @@
 <script context="module">
+    import { languageNames } from '$components/Lang';
+
     export async function load({ page }) {
         let theme = 'light';
         let accent = 'green';
         let size = 'normal';
+        let lang = 'en';
 
         const validThemes = ['light', 'dark'];
         const validAccents = [
@@ -35,12 +38,19 @@
                 size = _size;
             }
         }
+        if (page.query.has('lang')) {
+            const _lang = page.query.get('lang');
+            if (languageNames.includes(_lang)) {
+                lang = _lang;
+            }
+        }
 
         return {
             props: {
                 theme,
                 accent,
                 size,
+                lang,
             },
         };
     }
@@ -52,11 +62,14 @@
     import Error from '$components/Error.svelte';
     import Show from '$components/Show.svelte';
     import { byLatestEpisode } from '$components/utils';
-    import { onMount, tick } from 'svelte';
+    import { onMount, tick, setContext } from 'svelte';
 
     export let theme = 'light';
     export let accent = 'green';
     export let size = 'normal';
+    export let lang = 'en';
+
+    setContext('lang', lang);
 
     let divHeight;
 
@@ -81,6 +94,7 @@
         .filter((show) => show.progress !== 'Complete')
         .sort(byLatestEpisode);
     $: divHeight, messageParentAboutResize();
+    $: console.log('lang', lang);
 </script>
 
 <div
