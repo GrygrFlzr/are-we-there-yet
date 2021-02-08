@@ -68,9 +68,9 @@
     export let theme = 'light';
     export let accent = 'green';
     export let size = 'normal';
-    export let lang = writable('en');
+    export let lang = 'en';
 
-    setContext('lang', lang);
+    setContext('lang', writable(lang));
 
     let divHeight;
 
