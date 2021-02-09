@@ -12,6 +12,11 @@
     export let position;
 
     /**
+     * @type {HTMLElement | undefined}
+     */
+    let tooltip;
+
+    /**
      * @param {HTMLElement} node
      */
     function clamp(node) {
@@ -36,6 +41,9 @@
     $: colors =
         positionColors[position.acronym] ||
         'bg-gray-100 text-gray-800 border-gray-200';
+    $: if (tooltip) {
+        clamp(tooltip);
+    }
 </script>
 
 <div
@@ -45,7 +53,7 @@
     <!-- Tooltip -->
     <div
         class="block z-50 rounded-sm px-2 py-1 pointer-events-none opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity shadow border text-xs absolute whitespace-nowrap left-1/2 transform bottom-6 text-center -translate-x-1/2 {colors}"
-        use:clamp
+        bind:this={tooltip}
     >
         {position.name}
     </div>
