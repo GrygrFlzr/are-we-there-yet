@@ -15,8 +15,10 @@ const anime_airing: Config = {
     UNIT_PLURAL: `sarjat`,
     UNIT_SHORT: `Sarja`,
     SUBUNIT_SINGULAR: `jakso`,
-    SUBUNIT_PLURAL: `jaksoa`,
+    SUBUNIT_PLURAL: `jaksot`,
+    SUBUNIT_PLURAL_PARTITIVE: `jaksoa`,
     SUBUNIT_SHORT: `Jakso`,
+    SUBUNIT_SHORT_ELATIVE: `Jaksosta`,
     // e.g. Ep. 1 airs in 3 days
     SUBUNIT_VERB_FUTURE: `ilmestyy`,
     // e.g. Ep. 2 aired 2 hours ago
@@ -29,8 +31,10 @@ const anime_bluray: Config = {
     UNIT_SHORT: `Sarja`,
     // note: there may be a non-loanword in use I'm not aware of
     SUBUNIT_SINGULAR: `boksi`,
-    SUBUNIT_PLURAL: `boksia`,
+    SUBUNIT_PLURAL: `boksit`,
+    SUBUNIT_PLURAL_PARTITIVE: `boksia`,
     SUBUNIT_SHORT: `Vol.`,
+    SUBUNIT_SHORT_ELATIVE: `Vol.`,
     // e.g. Vol. 1 drops in 3 days
     SUBUNIT_VERB_FUTURE: `julkaistaan`,
     // e.g. Vol. 2 published 2 hours ago
@@ -42,8 +46,10 @@ const manga_chapter: Config = {
     UNIT_PLURAL: `manga`,
     UNIT_SHORT: `Manga`,
     SUBUNIT_SINGULAR: `luku`,
-    SUBUNIT_PLURAL: `lukua`,
+    SUBUNIT_PLURAL: `luvut`,
+    SUBUNIT_PLURAL_PARTITIVE: `lukua`,
     SUBUNIT_SHORT: `Luku`,
+    SUBUNIT_SHORT_ELATIVE: `Luvusta`,
     // e.g. Ch. 1 drops in 3 days
     SUBUNIT_VERB_FUTURE: `ilmestyy`,
     // e.g. Ch. 2 published 2 hours ago
@@ -55,8 +61,10 @@ const manga_volume: Config = {
     UNIT_PLURAL: `manga`,
     UNIT_SHORT: `Manga`,
     SUBUNIT_SINGULAR: `pokkari`,
-    SUBUNIT_PLURAL: `pokkaria`,
+    SUBUNIT_PLURAL: `pokkarit`,
+    SUBUNIT_PLURAL_PARTITIVE: `pokkaria`,
     SUBUNIT_SHORT: `Vol.`,
+    SUBUNIT_SHORT_ELATIVE: `Vol.`,
     // e.g. Vol. 1 drops in 3 days
     SUBUNIT_VERB_FUTURE: `julkaistaan`,
     // e.g. Vol. 2 published 2 hours ago
@@ -126,7 +134,7 @@ const strings: Strings = {
     UNIT_SHOW_LESS_PLURAL: `Piilota muut %SUBUNIT_PLURAL%`,
     UNIT_SHOW_REMAINDER_SINGULAR: `Näytä seuraava %SUBUNIT_SINGULAR%...`,
     // e.g. Show 2 more episodes...
-    UNIT_SHOW_REMAINDER_PLURAL: `Näytä seuraavat {1} %SUBUNIT_PLURAL%...`,
+    UNIT_SHOW_REMAINDER_PLURAL: `Näytä seuraavat {1} %SUBUNIT_PLURAL_PARTITIVE%...`,
     // e.g. Updated 5 hours ago
     UNIT_UPDATED: `Päivitetty {2}`,
 
@@ -143,9 +151,9 @@ const strings: Strings = {
     // shown when all positions are marked complete
     SUBUNIT_TO_RELEASE: `%SUBUNIT_SHORT% {0} odottaa julkaisua`,
     // shown when there are unfinished positions
-    SUBUNIT_IN_PROGRESS: `%SUBUNIT_SHORT% {0} odottaa: {2}`,
+    SUBUNIT_IN_PROGRESS: `%SUBUNIT_SHORT_ELATIVE% {0} jäljellä {2}`,
     // shown when all positions are marked incomplete after publication
-    SUBUNIT_NO_PROGRESS: `(ei vielä edistynyt)`,
+    SUBUNIT_NO_PROGRESS: `(aloittamatta)`,
 };
 
 import fi from 'javascript-time-ago/locale/fi';
