@@ -111,6 +111,8 @@ const strings: Strings = {
     EMBED_HIDE: `Piilota upotuskoodi`,
     // Example
     ALL_POSITIONS: `Kaikki työtehtävät`,
+    EXAMPLE_ERROR: `Tässä on esimerkki virheilmoituksesta`,
+    EXAMPLE_STATUS: `Tässä on esimerkki mahdollisesta statusviestistä`,
 
     /**
      * Unit (e.g. Show)
