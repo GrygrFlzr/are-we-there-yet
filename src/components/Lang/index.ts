@@ -17,9 +17,14 @@ for (const language of languages) {
 }
 TimeAgo.setDefaultLocale(en.anime_airing.locale.locale);
 
-function localizeTo(language: Language, reference: string) {
+function localizeTo(
+    language: Language,
+    reference: string,
+    fallbackReference?: string
+) {
     return (
         language.strings[reference] ||
+        language.strings[fallbackReference] ||
         `untranslated ${reference} for language ${language.locale.locale}`
     );
 }
@@ -39,7 +44,8 @@ export function createLocalization(
     )[context];
     const timeAgo = new TimeAgo(language.locale.locale);
     return {
-        localize: (reference: string) => localizeTo(language, reference),
+        localize: (reference: string, fallbackReference?: string) =>
+            localizeTo(language, reference, fallbackReference),
         timeAgo,
     };
 }

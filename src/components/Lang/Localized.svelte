@@ -5,8 +5,9 @@
     const lang = getContext('lang');
 
     let key = '';
+    let fallbackKey;
     let className = '';
-    export { key, className as class };
+    export { key, fallbackKey, className as class };
 
     let innerHTML = '';
 
@@ -15,8 +16,10 @@
      */
     let items = [];
 
+    $: localization = createLocalization($lang);
+    $: localize = localization.localize;
     $: {
-        let htmlString = localize(key);
+        let htmlString = localize(key, fallbackKey);
         if (items[0]) {
             htmlString = htmlString.replaceAll('{0}', items[0].innerHTML);
         }
@@ -28,8 +31,6 @@
         }
         innerHTML = htmlString;
     }
-    $: localization = createLocalization($lang);
-    $: localize = localization.localize;
 </script>
 
 <div class="hidden">

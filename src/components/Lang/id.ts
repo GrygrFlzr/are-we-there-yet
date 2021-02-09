@@ -121,6 +121,8 @@ const strings: Strings = {
      */
     UNIT_JOINT_WITH: `Bersama dengan {0}`,
     UNIT_SHOW_LESS: `Sembunyikan`,
+    // Plural version if needed, fallback to UNIT_SHOW_LESS otherwise
+    UNIT_SHOW_LESS_PLURAL: undefined,
     UNIT_SHOW_REMAINDER_SINGULAR: `Tunjukkan {1} %SUBUNIT_SINGULAR%...`,
     // e.g. Show 2 more episodes...
     UNIT_SHOW_REMAINDER_PLURAL: `Tunjukkan {1} %SUBUNIT_PLURAL%...`,

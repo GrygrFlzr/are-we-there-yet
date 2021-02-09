@@ -119,6 +119,8 @@ const strings: Strings = {
      */
     UNIT_JOINT_WITH: `בשיתוף עם {0}`,
     UNIT_SHOW_LESS: `הצג פחות`,
+    // Plural version if needed, fallback to UNIT_SHOW_LESS otherwise
+    UNIT_SHOW_LESS_PLURAL: undefined,
     UNIT_SHOW_REMAINDER_SINGULAR: `הצג {1} %SUBUNIT_SINGULAR% נוסף...`,
     // e.g. Show 2 more episodes...
     UNIT_SHOW_REMAINDER_PLURAL: `הצג {1} %SUBUNIT_PLURAL% נוספים...`,

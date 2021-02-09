@@ -121,6 +121,8 @@ const strings: Strings = {
      */
     UNIT_JOINT_WITH: `Joint with {0}`,
     UNIT_SHOW_LESS: `Show less`,
+    // Plural version if needed, fallback to UNIT_SHOW_LESS otherwise
+    UNIT_SHOW_LESS_PLURAL: undefined,
     UNIT_SHOW_REMAINDER_SINGULAR: `Show {1} more %SUBUNIT_SINGULAR%...`,
     // e.g. Show 2 more episodes...
     UNIT_SHOW_REMAINDER_PLURAL: `Show {1} more %SUBUNIT_PLURAL%...`,
