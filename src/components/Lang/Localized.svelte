@@ -5,7 +5,7 @@
     const lang = getContext('lang');
 
     let key = '';
-    let fallbackKey;
+    let fallbackKey = undefined;
     let className = '';
     export { key, fallbackKey, className as class };
 
