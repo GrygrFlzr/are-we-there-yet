@@ -1,6 +1,9 @@
 /**
  * Spanish translation
- * @author Delt <deltkastel@gmail.com>
+ * @author Delt <delt@k19.org>
+ * @author Gabuh
+ * @author Nyarthur
+ * @author Olivo28
  */
 
 import {
@@ -11,12 +14,12 @@ import {
 } from '$components/Lang/builder';
 
 const anime_airing: Config = {
-    UNIT_SINGULAR: `serie`,
-    UNIT_PLURAL: `series`,
-    UNIT_SHORT: `Serie`,
+    UNIT_SINGULAR: `anime`,
+    UNIT_PLURAL: `animes`,
+    UNIT_SHORT: `Anime`,
     SUBUNIT_SINGULAR: `episodio`,
     SUBUNIT_PLURAL: `episodios`,
-    SUBUNIT_SHORT: `Ep.`,
+    SUBUNIT_SHORT: `ep.`,
     // e.g. Ep. 1 airs in 3 days
     SUBUNIT_VERB_FUTURE: `se transmitirá`,
     // e.g. Ep. 2 aired 2 hours ago
@@ -38,7 +41,7 @@ const anime_bluray: Config = {
 
 const manga_chapter: Config = {
     UNIT_SINGULAR: `manga`,
-    UNIT_PLURAL: `manga`,
+    UNIT_PLURAL: `mangas`,
     UNIT_SHORT: `Manga`,
     SUBUNIT_SINGULAR: `capítulo`,
     SUBUNIT_PLURAL: `capítulos`,
@@ -104,12 +107,14 @@ const strings: Strings = {
     // Language section
     LANGUAGE_HEADER: `Idioma`,
     // Description in Wordpress embed code
-    EMBED_HEADER: `Código embedido para Wordpress`,
+    EMBED_HEADER: `Código incrustable para Wordpress`,
     EMBED_DESCRIPTION: `Redimensionar el iframe tras la carga`,
-    EMBED_SHOW: `Mostrar código embedido`,
-    EMBED_HIDE: `Ocultar código embedido`,
+    EMBED_SHOW: `Mostrar código incrustable`,
+    EMBED_HIDE: `Ocultar código incrustable`,
     // Example
-    ALL_POSITIONS: `Todas las posiciones del staff`,
+    ALL_POSITIONS: `Todos los puestos del staff`,
+    EXAMPLE_ERROR: `Este ejemplo de error`,
+    EXAMPLE_STATUS: `Este es un ejemplo de mensaje de estado opcional`,
 
     /**
      * Unit (e.g. Show)
@@ -117,13 +122,13 @@ const strings: Strings = {
      * {1} = number of remaining units
      * {2} = relative time
      */
-    UNIT_JOINT_WITH: `En colaboración {0}`,
+    UNIT_JOINT_WITH: `En colaboración con {0}`,
     UNIT_SHOW_LESS: `Mostrar menos`,
     UNIT_SHOW_REMAINDER_SINGULAR: `Mostrar el %SUBUNIT_SINGULAR% restante...`,
     // e.g. Show 2 more episodes...
     UNIT_SHOW_REMAINDER_PLURAL: `Mostrar los {1} %SUBUNIT_PLURAL% restantes...`,
     // e.g. Updated 5 hours ago
-    UNIT_UPDATED: `Updated {2}`,
+    UNIT_UPDATED: `Actualizado {2}`,
 
     /**
      * Subunit (e.g. Episode)
@@ -134,13 +139,13 @@ const strings: Strings = {
     // e.g. Ep. 1 airs in 5 days
     SUBUNIT_NOT_PUBLISHED: `%SUBUNIT_SHORT% {0} %SUBUNIT_VERB_FUTURE% {1}`,
     // e.g. Ep. 1 aired 4 days ago
-    SUBUNIT_WAS_PUBLISHED: `%SUBUNIT_SHORT% {0} %SUBUNIT_VERB_PAST% {1}`,
+    SUBUNIT_WAS_PUBLISHED: `El %SUBUNIT_SHORT% {0} %SUBUNIT_VERB_PAST% {1}`,
     // shown when all positions are marked complete
-    SUBUNIT_TO_RELEASE: `%SUBUNIT_SHORT% {0} está listo para su release`,
+    SUBUNIT_TO_RELEASE: `%SUBUNIT_SHORT% {0} está listo para ser publicado`,
     // shown when there are unfinished positions
-    SUBUNIT_IN_PROGRESS: `%SUBUNIT_SHORT% {0} le falta {2}`,
+    SUBUNIT_IN_PROGRESS: `Al %SUBUNIT_SHORT% {0} le falta: {2}`,
     // shown when all positions are marked incomplete after publication
-    SUBUNIT_NO_PROGRESS: `(no progress yet)`,
+    SUBUNIT_NO_PROGRESS: `(aún no hay progreso)`,
 };
 
 import es from 'javascript-time-ago/locale/es';
