@@ -120,6 +120,8 @@ const strings: Strings = {
      */
     UNIT_JOINT_WITH: `Совместно с {0}`,
     UNIT_SHOW_LESS: `Показать меньше`,
+    // Plural version if needed, fallback to UNIT_SHOW_LESS otherwise
+    UNIT_SHOW_LESS_PLURAL: undefined,
     UNIT_SHOW_REMAINDER_SINGULAR: `Показать ещё {1} %SUBUNIT_SINGULAR%...`,
     // e.g. Show 2 more episodes...
     UNIT_SHOW_REMAINDER_PLURAL: `Показать ещё {1} %SUBUNIT_PLURAL%...`,

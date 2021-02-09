@@ -124,6 +124,8 @@ const strings: Strings = {
      */
     UNIT_JOINT_WITH: `En colaboración con {0}`,
     UNIT_SHOW_LESS: `Mostrar menos`,
+    // Plural version if needed, fallback to UNIT_SHOW_LESS otherwise
+    UNIT_SHOW_LESS_PLURAL: undefined,
     UNIT_SHOW_REMAINDER_SINGULAR: `Mostrar el %SUBUNIT_SINGULAR% restante...`,
     // e.g. Show 2 more episodes...
     UNIT_SHOW_REMAINDER_PLURAL: `Mostrar los {1} %SUBUNIT_PLURAL% restantes...`,

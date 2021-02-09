@@ -102,7 +102,14 @@
                 <div class="h-5 w-5">
                     <ChevronUpSmall />
                 </div>
-                <Localized key="UNIT_SHOW_LESS" />
+                {#if moreNumber === 1}
+                    <Localized key="UNIT_SHOW_LESS" />
+                {:else}
+                    <Localized
+                        key="UNIT_SHOW_LESS_PLURAL"
+                        fallbackKey="UNIT_SHOW_LESS"
+                    />
+                {/if}
             </button>
         {:else}
             <Episode episode={latest} status={show.status} latest={true} />
