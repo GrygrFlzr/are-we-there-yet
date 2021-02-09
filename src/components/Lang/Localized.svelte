@@ -4,9 +4,10 @@
 
     const lang = getContext('lang');
 
-    // look ahead for `{`
-    // or look behind for `}`
-    const splitRegex = /(?={)|(?<=})/g;
+    // {\d+}          {0} {1} {2} etc
+    // .+?(?={\d+})   other stuff before it
+    // .+$            remainder of the string
+    const groupRegex = /({\d+}|.+?(?={\d+})|.+$)/g;
 
     let key = '';
     let fallbackKey = undefined;
@@ -17,7 +18,7 @@
      * @param {string} text
      */
     function splitString(text) {
-        return text.split(splitRegex);
+        return Array.from(text.matchAll(groupRegex), (result) => result[0]);
     }
 
     $: localization = createLocalization($lang);
