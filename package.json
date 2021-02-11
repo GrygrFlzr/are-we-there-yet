@@ -7,16 +7,16 @@
     "bugs": "https://github.com/GrygrFlzr/are-we-there-yet/issues",
     "license": "(MIT OR Apache-2.0)",
     "scripts": {
-        "dev": "env-cmd --silent svelte-kit dev",
-        "build": "env-cmd --silent svelte-kit build && svelte-kit adapt",
-        "build:netlify": "cross-env ADAPTER=netlify npm run build && npm run build:netlify:bodge",
+        "dev": "env-cmd --silent not-svelte-kit dev",
+        "build": "env-cmd --silent not-svelte-kit build && not-svelte-kit adapt",
+        "build:netlify": "cross-env ADAPTER=netlify npm run build",
         "build:netlify:bodge": "npm run build:netlify:bodge:1 && npm run build:netlify:bodge:2",
         "build:netlify:bodge:1": "mv ./functions/render/app.cjs ./functions/render/app.js",
         "build:netlify:bodge:2": "mv ./functions/render/app.cjs.map ./functions/render/app.js.map",
         "build:vercel": "cross-env ADAPTER=vercel npm run build",
         "build:static": "cross-env ADAPTER=static npm run build",
         "clean": "rm -rf .svelte build functions api public .vercelignore vercel.json",
-        "start": "env-cmd --silent svelte-kit start"
+        "start": "env-cmd --silent not-svelte-kit start"
     },
     "dependencies": {
         "node-fetch": "^2.6.1"
@@ -25,11 +25,11 @@
         "@snowpack/plugin-build-script": "^2.0.11",
         "@snowpack/plugin-svelte": "^3.4.0",
         "@snowpack/plugin-typescript": "^1.0.0",
-        "@sveltejs/adapter-netlify": "next",
-        "@sveltejs/adapter-node": "next",
-        "@sveltejs/adapter-static": "next",
-        "@sveltejs/adapter-vercel": "next",
-        "@sveltejs/kit": "next",
+        "@sveltejs/adapter-netlify": "^1.0.0-next.1",
+        "@sveltejs/adapter-node": "^1.0.0-next.2",
+        "@sveltejs/adapter-static": "^1.0.0-next.2",
+        "@sveltejs/adapter-vercel": "^1.0.0-next.2",
+        "@sveltejs/kit": "^1.0.0-next.34",
         "@sveltejs/snowpack-config": "next",
         "@types/javascript-time-ago": "^2.0.1",
         "autoprefixer": "^10.1.0",
@@ -37,15 +37,16 @@
         "cssnano": "^4.1.10",
         "env-cmd": "^10.1.0",
         "javascript-time-ago": "^2.3.4",
+        "not-svelte-kit": "0.0.5-next.34",
         "postcss": "^8.2.5",
         "postcss-cli": "^8.3.1",
         "postcss-load-config": "^3.0.1",
         "prettier": "^2.2.1",
-        "snowpack": "^3.0.10",
-        "svelte": "^3.32.2",
-        "svelte-preprocess": "^4.6.1",
+        "snowpack": "^3.0.11",
+        "svelte": "^3.32.3",
+        "svelte-preprocess": "^4.6.8",
         "tailwindcss": "^2.0.3",
         "tslib": "^2.0.0",
-        "typescript": "^4.0.0"
+        "typescript": "^4.1.5"
     }
 }
