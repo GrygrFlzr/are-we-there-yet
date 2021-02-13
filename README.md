@@ -45,14 +45,12 @@ Your application will be statically generated every time your group's projects a
 7. Under **Advanced build settings**, click **New variable**.
 8. Set **Key** to `TOKEN`. Set **Value** to your group token from Deschtimes.
 9. **Deploy site**.
- <!--
 10. Under **Build & deploy**, scroll down to **Build hooks** and click **Add build hook**.
 11. Set the name to something descriptive like `Deschtimes` and keep the branch to `main`. Hit save and copy the URL.
 12. Log in to Deschtimes and go to your Group page. Under **Webhooks**, click **Manage**.
 13. Click **Add Webhook**. Use a descriptive name like `Netlify`, and paste the URL you obtained from step 11. Change the platform to **Vercel**, press **Create Webhook**.
-    -->
 
-Your application will be _dynamically_ generated every time you recieve a request.
+Your application will be statically generated every time your group's projects are updated on Deschtimes.
 
 ### Deploying on your own server
 
