@@ -99,3 +99,73 @@ export function deduplicateStaff(stafflist: Staff[]) {
         return acronymList.indexOf(staff.position.acronym) === index;
     });
 }
+
+function allGroupPositions(group: Group): string[] {
+    return group.shows.flatMap((show) =>
+        show.episodes.flatMap((episode) =>
+            deduplicateStaff(episode.staff).flatMap(
+                (staff) => staff.position.acronym
+            )
+        )
+    );
+}
+
+function groupPositionCount(positions: string[]): Record<string, number> {
+    return positions.reduce((accumulator, currentPosition) => {
+        return {
+            ...accumulator,
+            [currentPosition]: (accumulator[currentPosition] || 0) + 1,
+        };
+    }, {});
+}
+
+function corePositions(
+    positionCounts: Record<string, number>
+): Record<string, number> {
+    return Object.fromEntries(
+        Object.entries(positionCounts)
+            .sort((a, b) => {
+                const [_keyA, countA] = a;
+                const [_keyB, countB] = b;
+                return countB - countA;
+            })
+            .slice(0, 7)
+    );
+}
+
+function averagePositionIndex(group: Group, acronym: string) {
+    const episodePositions = group.shows.flatMap((show) =>
+        show.episodes.map((episode) =>
+            deduplicateStaff(episode.staff).flatMap(
+                (staff) => staff.position.acronym
+            )
+        )
+    );
+    const appearances = episodePositions.filter((episode) =>
+        episode.includes(acronym)
+    );
+    return (
+        appearances
+            .map((episode) => episode.indexOf(acronym))
+            .reduce((a, b) => a + b) / appearances.length
+    );
+}
+
+function byAvgIndex(group: Group) {
+    return (a: [string, number], b: [string, number]) => {
+        const [acronymA] = a;
+        const [acronymB] = b;
+        const indexA = averagePositionIndex(group, acronymA);
+        const indexB = averagePositionIndex(group, acronymB);
+        return indexA - indexB;
+    };
+}
+
+export function groupCorePositions(group: Group) {
+    const positions = allGroupPositions(group);
+    const positionCounts = groupPositionCount(positions);
+    const core = corePositions(positionCounts);
+    return Object.entries(core)
+        .sort(byAvgIndex(group))
+        .map(([key, _value]) => key);
+}

@@ -1,4 +1,4 @@
-import { byLatestEpisode, Show } from '$components/utils';
+import { groupCorePositions, byLatestEpisode, Show } from '$components/utils';
 import fetch from 'node-fetch';
 
 type PrepareOptions = {
@@ -16,6 +16,7 @@ export async function prepare(): Promise<PrepareOptions> {
         // Strip member data
         const filteredData = {
             ...data,
+            corePositions: groupCorePositions(data),
             shows: data.shows
                 .filter((show: Show) => show.progress !== 'Complete')
                 .map((show: Show) => ({
