@@ -19,6 +19,7 @@
         "start": "env-cmd --silent not-svelte-kit start"
     },
     "dependencies": {
+        "encoding": "^0.1.13",
         "node-fetch": "^2.6.1"
     },
     "devDependencies": {
