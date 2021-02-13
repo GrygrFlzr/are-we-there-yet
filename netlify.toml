@@ -2,3 +2,4 @@
     command = "npm run build:netlify"
     publish = "build/"
     functions = "functions/"
+    environment = { NODE_VERSION = "14" }
