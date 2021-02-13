@@ -14,9 +14,7 @@ You have multiple options to deploy the app.
 
 ### Deploying to Vercel
 
-<del>This is the recommended method.</del>
-
-Not recommended until Deschtimes webhook can properly support Vercel. Use Netlify for now.
+This is the recommended method.
 
 1. Fork this repository.
 2. [Login to Vercel](https://vercel.com/login). GitHub, GitLab, Bitbucket, and plain e-mail are all supported. Create a new project.
@@ -32,7 +30,7 @@ Not recommended until Deschtimes webhook can properly support Vercel. Use Netlif
 8. Under your newly made project, go to **Settings** > **Git**, and scroll down to **Deploy Hooks**.
 9. Create a Hook with a descriptive name (`Deschtimes` is suggested) and type in `main` for your `Git Branch Name`, click **Create Hook**. **Copy** the newly added webhook URL and do not share it with anyone else.
 10. Log in to Deschtimes and go to your Group page. Under **Webhooks**, click **Manage**.
-11. Click **Add Webhook**. Use a descriptive name like `Vercel`, and paste the URL you obtained from step 9. Set the platform to **Discord**, press **Create Webhook**.
+11. Click **Add Webhook**. Use a descriptive name like `Vercel`, and paste the URL you obtained from step 9. Set the platform to **Vercel**, press **Create Webhook**.
 
 Your application will be statically generated every time your group's projects are updated on Deschtimes.
 
@@ -51,7 +49,7 @@ Your application will be statically generated every time your group's projects a
 10. Under **Build & deploy**, scroll down to **Build hooks** and click **Add build hook**.
 11. Set the name to something descriptive like `Deschtimes` and keep the branch to `main`. Hit save and copy the URL.
 12. Log in to Deschtimes and go to your Group page. Under **Webhooks**, click **Manage**.
-13. Click **Add Webhook**. Use a descriptive name like `Netlify`, and paste the URL you obtained from step 11. Change the platform to **Discord**, press **Create Webhook**.
+13. Click **Add Webhook**. Use a descriptive name like `Netlify`, and paste the URL you obtained from step 11. Change the platform to **Vercel**, press **Create Webhook**.
     -->
 
 Your application will be _dynamically_ generated every time you recieve a request.
