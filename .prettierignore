@@ -1,8 +1,8 @@
 .DS_Store
 .env
 node_modules
-package-lock.json
-/.svelte
+/.svelte-kit
+/package
 /build
 /functions
 /api
@@ -10,4 +10,3 @@ package-lock.json
 .vercelignore
 .vercel
 .vercel_build_output
-vercel.json
