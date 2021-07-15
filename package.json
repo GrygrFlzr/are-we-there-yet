@@ -10,7 +10,7 @@
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
-		"build:vercel": "npm i -g pnpm && pnpm i && pnpm build",
+		"build:vercel": "svelte-kit build",
 		"build:netlify": "npm i -g pnpm && pnpm i && pnpm build",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
