@@ -5,7 +5,9 @@ Web client for Deschtimes group status.
 ## Local Development
 
 ```sh
-npm run dev
+npm i -g pnpm
+pnpm i
+pnpm dev
 ```
 
 ## Deploying the Application
