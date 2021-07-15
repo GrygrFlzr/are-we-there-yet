@@ -141,7 +141,7 @@ const strings: Strings = {
 	SUBUNIT_NO_PROGRESS: `(אין עדכון עדיין)`
 };
 
-import he from 'javascript-time-ago/locale/he';
+import he from 'javascript-time-ago/locale/he/index.js';
 const lang: Language = {
 	locale: he,
 	strings: strings

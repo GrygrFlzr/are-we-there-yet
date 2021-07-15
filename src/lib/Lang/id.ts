@@ -143,7 +143,7 @@ const strings: Strings = {
 	SUBUNIT_NO_PROGRESS: `(belum ada kemajuan)`
 };
 
-import id from 'javascript-time-ago/locale/id';
+import id from 'javascript-time-ago/locale/id/index.js';
 const lang: Language = {
 	locale: id,
 	strings: strings

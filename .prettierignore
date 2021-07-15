@@ -10,3 +10,4 @@ node_modules
 .vercelignore
 .vercel
 .vercel_build_output
+pnpm-lock.yaml

@@ -141,7 +141,7 @@ const strings: Strings = {
 	SUBUNIT_NO_PROGRESS: `(nierozpoczęty)`
 };
 
-import pl from 'javascript-time-ago/locale/pl';
+import pl from 'javascript-time-ago/locale/pl/index.js';
 const lang: Language = {
 	locale: pl,
 	strings: strings

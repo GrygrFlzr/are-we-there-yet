@@ -152,7 +152,7 @@ const strings: Strings = {
 	SUBUNIT_NO_PROGRESS: `(aloittamatta)`
 };
 
-import fi from 'javascript-time-ago/locale/fi';
+import fi from 'javascript-time-ago/locale/fi/index.js';
 const lang: Language = {
 	locale: fi,
 	strings: strings

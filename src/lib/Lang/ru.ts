@@ -142,7 +142,7 @@ const strings: Strings = {
 	SUBUNIT_NO_PROGRESS: `(Прогресса нет)`
 };
 
-import ru from 'javascript-time-ago/locale/ru';
+import ru from 'javascript-time-ago/locale/ru/index.js';
 const lang: Language = {
 	locale: ru,
 	strings: strings
