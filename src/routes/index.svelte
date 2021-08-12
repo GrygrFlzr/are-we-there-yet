@@ -13,7 +13,7 @@
 		const validAccents = ['red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'pink', 'none'];
 		const validSizes = ['small', 'normal'];
 
-		const query = prerendering ? page.query : new URLSearchParams(location.search);
+		const query = new URLSearchParams(prerendering ? '' : location.search);
 
 		if (query.has('theme')) {
 			const _theme = query.get('theme');
