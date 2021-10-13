@@ -64,7 +64,7 @@
 </${'script'}>
 <iframe
     id="areWeThereYet"
-    src="${domain}/?${querystring}"
+    src="${domain}/#${querystring}"
     allowtransparency="true"
     frameborder="0"
     style="opacity: 0; min-width: 100%;"
@@ -86,11 +86,11 @@
 						<input
 							class="px-2 py-1 bg-gray-200 dark:bg-gray-600"
 							type="text"
-							value="{domain}/?{querystring}"
+							value="{domain}/#{querystring}"
 							disabled
 						/>
 						<p class="mt-2 text-blue-700 dark:text-blue-300">
-							<a href="{domain}/?{querystring}" class="flex flex-row">
+							<a href="{domain}/#{querystring}" class="flex flex-row">
 								<div class="h-6 w-6 mr-1">
 									{@html ExternalLinkSvg}
 								</div>

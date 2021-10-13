@@ -12,26 +12,25 @@
 </script>
 
 <script lang="ts">
-	import { page } from '$app/stores';
 	import AllDone from '$lib/AllDone.svelte';
 	import Error from '$lib/Error.svelte';
 	import Show from '$lib/Show.svelte';
 	import { byLatestEpisode } from '$lib/utils';
-	import { onMount, tick, setContext } from 'svelte';
-	import { writable } from 'svelte/store';
+	import { onMount, tick, setContext, getContext } from 'svelte';
+	import { Writable, writable } from 'svelte/store';
 	import type { GroupOrError, Show as ShowType, AccentColors } from '$lib/utils';
 
 	export let groupOrError: GroupOrError;
 
-	let theme = $page.query.has('theme') ? $page.query.get('theme') : 'light';
-	let accent: AccentColors = $page.query.has('accent')
-		? ($page.query.get('accent') as AccentColors)
-		: 'green';
-	let size = $page.query.has('size') ? $page.query.get('size') : 'normal';
-	let lang = $page.query.has('lang') ? $page.query.get('lang') : 'en';
+	let theme = 'light';
+	let accent: AccentColors = 'green';
+	let size = 'normal';
+	let lang = 'en';
 
 	setContext('lang', writable(lang));
 	setContext('groupOrError', writable(groupOrError));
+
+	const langStore = getContext<Writable<string>>('lang');
 
 	let divHeight: number;
 
@@ -49,6 +48,21 @@
 	}
 
 	onMount(() => {
+		const querystring = location.hash.substr(1);
+		const params = new URLSearchParams(querystring);
+		if (params.has('theme')) {
+			theme = params.get('theme');
+		}
+		if (params.has('accent')) {
+			accent = params.get('accent') as AccentColors;
+		}
+		if (params.has('size')) {
+			size = params.get('size');
+		}
+		if (params.has('lang')) {
+			lang = params.get('lang');
+			$langStore = lang;
+		}
 		messageParentAboutResize();
 	});
 

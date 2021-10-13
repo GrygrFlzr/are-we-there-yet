@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.0
+
+Released 2021-10-13
+
+- [BREAKING] Switched from query parameters to hash parameters
+
+## 1.3.0
+
+Released 2021-10-13
+
+- Switched TailwindCSS to WindiCSS
+- Moved data retrieval from hooks to endpoint
+
 ## 1.2.0
 
 Released 2021-07-15
