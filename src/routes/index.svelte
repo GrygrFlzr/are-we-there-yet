@@ -1,55 +1,18 @@
 <script context="module" lang="ts">
-	import { languageNames } from '$lib/Lang';
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = async ({ page }) => {
-		let theme = 'light';
-		let accent = 'green';
-		let size = 'normal';
-		let lang = 'en';
-
-		const validThemes = ['light', 'dark'];
-		const validAccents = ['red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'pink', 'none'];
-		const validSizes = ['small', 'normal'];
-
-		if (page.query.has('theme')) {
-			const _theme = page.query.get('theme');
-			if (validThemes.includes(_theme)) {
-				theme = _theme;
-			}
-		}
-		if (page.query.has('accent')) {
-			const _accent = page.query.get('accent');
-			if (validAccents.includes(_accent)) {
-				accent = _accent;
-			}
-		}
-		if (page.query.has('size')) {
-			const _size = page.query.get('size');
-			if (validSizes.includes(_size)) {
-				size = _size;
-			}
-		}
-		if (page.query.has('lang')) {
-			const _lang = page.query.get('lang');
-			if (languageNames.includes(_lang)) {
-				lang = _lang;
-			}
-		}
+	export const load: Load = async ({ fetch }) => {
+		const response = await fetch('/api');
+		const groupOrError = await response.json();
 
 		return {
-			props: {
-				theme,
-				accent,
-				size,
-				lang
-			}
+			props: { groupOrError }
 		};
 	};
 </script>
 
 <script lang="ts">
-	import { getStores } from '$app/stores';
+	import { page } from '$app/stores';
 	import AllDone from '$lib/AllDone.svelte';
 	import Error from '$lib/Error.svelte';
 	import Show from '$lib/Show.svelte';
@@ -58,14 +21,17 @@
 	import { writable } from 'svelte/store';
 	import type { GroupOrError, Show as ShowType, AccentColors } from '$lib/utils';
 
-	const { session } = getStores<GroupOrError>();
+	export let groupOrError: GroupOrError;
 
-	export let theme = 'light';
-	export let accent: AccentColors = 'green';
-	export let size = 'normal';
-	export let lang = 'en';
+	let theme = $page.query.has('theme') ? $page.query.get('theme') : 'light';
+	let accent: AccentColors = $page.query.has('accent')
+		? ($page.query.get('accent') as AccentColors)
+		: 'green';
+	let size = $page.query.has('size') ? $page.query.get('size') : 'normal';
+	let lang = $page.query.has('lang') ? $page.query.get('lang') : 'en';
 
 	setContext('lang', writable(lang));
+	setContext('groupOrError', writable(groupOrError));
 
 	let divHeight: number;
 
@@ -88,9 +54,9 @@
 
 	let incompleteShows: ShowType[];
 	$: incompleteShows =
-		'message' in $session
+		'message' in groupOrError
 			? []
-			: $session.shows.filter((show) => show.progress !== 'Complete').sort(byLatestEpisode);
+			: groupOrError.shows.filter((show) => show.progress !== 'Complete').sort(byLatestEpisode);
 	// @ts-ignore
 	$: divHeight, messageParentAboutResize();
 </script>
@@ -103,9 +69,9 @@
 	{#each incompleteShows as show (show.id)}
 		<Show {show} {accent} />
 	{:else}
-		{#if 'message' in $session}
+		{#if 'message' in groupOrError}
 			<!-- Error -->
-			<Error message={$session.message} />
+			<Error message={groupOrError.message} />
 		{:else}
 			<!-- No incomplete shows -->
 			<AllDone />

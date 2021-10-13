@@ -1,5 +1,5 @@
 <script>
-	import '$lib/global.postcss';
+	import 'virtual:windi.css';
 </script>
 
 <slot />

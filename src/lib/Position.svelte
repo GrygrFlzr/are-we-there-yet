@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { getStores } from '$app/stores';
 	import type { Position, GroupOrError } from '$lib/utils';
-
-	const { session } = getStores<GroupOrError>();
+	import { getContext } from 'svelte';
+	import type { Writable } from 'svelte/store';
 
 	const colorPalette = [
 		'bg-red-100 text-red-800 border-red-200',
@@ -14,7 +13,10 @@
 		'bg-pink-100 text-pink-800 border-pink-200'
 	];
 
+	const groupOrError = getContext<Writable<GroupOrError>>('groupOrError');
+
 	export let position: Position;
+	let corePositions: string[] = [];
 	let colors = '';
 
 	let tooltip: HTMLElement | undefined;
@@ -41,7 +43,10 @@
 		}
 	}
 
-	$: corePositions = 'message' in $session ? [] : $session.corePositions;
+	$: corePositions =
+		typeof groupOrError === 'undefined' || 'message' in $groupOrError
+			? []
+			: $groupOrError.corePositions;
 	// @ts-ignore
 	$: corePositions, computeColor();
 	$: if (tooltip) {
