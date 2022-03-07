@@ -10,7 +10,11 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
-		// hydrate the <div id="svelte"> element in src/app.html
+
+		prerender: {
+			default: true
+		},
+
 		vite: {
 			plugins: [WindiCSS({})]
 		}
