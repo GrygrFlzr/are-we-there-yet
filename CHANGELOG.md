@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1
+
+Released 2022-03-07
+
+- Fixed build issues caused by dependency changes
+
 ## 2.0.0
 
 Released 2021-10-13
